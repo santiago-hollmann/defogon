@@ -4,7 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-import com.olx.grog.network.NetworkUtilities;
+import com.lookeate.android.core_lib.network.NetworkUtilities;
 
 public class ConnectivityReceiver extends BroadcastReceiver {
 

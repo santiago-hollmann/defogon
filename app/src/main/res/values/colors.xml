@@ -3,7 +3,10 @@
     <!-- BASIC COLORS -->
     <color name="light_gray">#E6E6E6</color>
     <color name="white">#FFFFFF</color>
-
+    <color name="black">#000000</color>
+    <color name="translucent_black">#66000000</color>
+    <color name="orange">#FFFF7900</color>
+    <color name="blue">#2973D2</color>
 
     <!-- FORMS -->
     <color name="forms_light_text_color">#FFD2D2D2</color>
@@ -14,7 +17,6 @@
 
     <!-- SYSTEM -->
     <color name="action_bar_background">@color/white</color>
-    <color name="blue">#2973D2</color>
 
 
 </resources>

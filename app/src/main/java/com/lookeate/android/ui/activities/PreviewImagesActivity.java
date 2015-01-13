@@ -2,20 +2,18 @@ package com.lookeate.android.ui.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.lookeate.com.lookeate.R;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-import com.olx.olx.R;
-import com.olx.olx.adapters.PreviewImagesAdapter;
-import com.olx.olx.model.ResolvedLocation;
-import com.olx.olx.ui.views.controls.ImagesPageIndicator;
-import com.olx.olx.ui.views.controls.ImagesViewPager;
+import com.lookeate.android.adapters.PreviewImagesAdapter;
+import com.lookeate.android.ui.views.controls.ImagesPageIndicator;
+import com.lookeate.android.ui.views.controls.ImagesViewPager;
 
 public class PreviewImagesActivity extends BaseActivity {
-
     private PreviewImagesAdapter mAdapter;
     protected ImagesViewPager mPager;
     private ImagesPageIndicator mTitleIndicator;
@@ -79,15 +77,11 @@ public class PreviewImagesActivity extends BaseActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.send, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_send) {
-            finish();
-        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -113,10 +107,6 @@ public class PreviewImagesActivity extends BaseActivity {
 
     public void setStartingPosition(int startingPosition) {
         this.startingPosition = startingPosition;
-    }
-
-    @Override
-    public void onLocationChanged(ResolvedLocation location) {
     }
 
     @Override

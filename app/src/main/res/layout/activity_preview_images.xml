@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black" >
+
+    <com.olx.olx.ui.views.controls.ImagesViewPager
+        android:id="@+id/libuic_activity_pager_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <com.olx.olx.ui.views.controls.ImagesPageIndicator
+        android:id="@+id/indicator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="@dimen/large_padding" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="@dimen/big_distance"
+        android:alpha="0.2"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/placeholder" />
+
+</FrameLayout>

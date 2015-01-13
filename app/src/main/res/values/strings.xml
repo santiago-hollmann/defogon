@@ -11,4 +11,7 @@
     <string name="check_your_internet_connection">Check your Internet connection</string>
     <string name="ok">OK</string>
     <string name="error_loading_content">Error loading the content</string>
+    <string name="connecting">Connecting...</string>
+    <string name="autolocating">Autolocating...</string>
+    <string name="language_code">languageCode</string>
 </resources>

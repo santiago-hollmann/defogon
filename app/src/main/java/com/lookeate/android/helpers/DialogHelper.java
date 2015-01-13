@@ -1,15 +1,14 @@
 package com.lookeate.android.helpers;
 
 import android.app.Dialog;
+import android.lookeate.com.lookeate.R;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 
-import com.olx.grog.helpers.LogInternal;
-import com.olx.olx.Constants;
-import com.olx.olx.R;
-import com.olx.olx.ui.fragments.CustomChoiceDialogFragment;
-import com.olx.olx.ui.fragments.CustomDialogFragment;
+import com.lookeate.android.core_lib.helpers.LogInternal;
+import com.lookeate.android.ui.fragments.CustomDialogFragment;
+import com.lookeate.android.util.Constants;
 
 public class DialogHelper {
     private static boolean isShowingProgressDialog = false;
@@ -155,28 +154,12 @@ public class DialogHelper {
         showDialog(dialog, activity, String.valueOf(dialogId));
     }
 
-    public static void show(final FragmentActivity activity, String title, int ok, int cancel, String[] items, int dialogId) {
-        CustomChoiceDialogFragment dialog = CustomChoiceDialogFragment.newInstance(dialogId, title, ok, cancel, items);
-        showDialog(dialog, activity, String.valueOf(dialogId));
-    }
-
-    public static void show(final FragmentActivity activity, String title, int ok, int cancel, String[] items, int dialogId, int selected) {
-        CustomChoiceDialogFragment dialog = CustomChoiceDialogFragment.newInstance(dialogId, title, ok, cancel, items, selected);
-        showDialog(dialog, activity, String.valueOf(dialogId));
-    }
-
     public static boolean isShowingProgressDialog() {
         return isShowingProgressDialog;
     }
 
     public interface Dialogs {
-        public static final int GENERIC = 2000;
         public static final int GENERIC_ERROR = -2001;
-        public static final int ABORT_ERROR = -2002;
-        public static final int HALT_ERROR = -2003;
-        public static final int SERVICE_ERROR = -2004;
-        public static final int INFORMATION_ERROR = -2005;
-        public static final int USER_CHOICE_ERROR = -2006;
         public static final int PROGRESS = 3000;
         public static final int SWAP_PROGRESS = 3010;
     }

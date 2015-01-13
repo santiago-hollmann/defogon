@@ -7,8 +7,8 @@ import android.content.res.Configuration;
 import android.os.Build;
 import android.text.TextUtils;
 
-import com.olx.olx.Constants;
-import com.olx.olx.LeChuckApplication;
+import com.lookeate.android.AppApplication;
+import com.lookeate.android.util.Constants;
 
 import java.lang.reflect.Method;
 
@@ -32,10 +32,10 @@ public class Utilities {
     }
 
     static {
-        PackageManager pm = LeChuckApplication.getApplication().getPackageManager();
+        PackageManager pm = AppApplication.getApplication().getPackageManager();
         try {
             PackageInfo pi;
-            pi = pm.getPackageInfo(LeChuckApplication.getApplication().getPackageName(), 0);
+            pi = pm.getPackageInfo(AppApplication.getApplication().getPackageName(), 0);
             phoneInfo = String.format(Constants.PHONE_INFO, pi.packageName, pi.versionName, pi.versionCode, Build.BOARD,
                     Build.BRAND, Build.MODEL, Build.VERSION.RELEASE, installedFrom);
             version = pi.versionName;
@@ -47,7 +47,7 @@ public class Utilities {
         try {
             mth = PackageManager.class.getMethod("getInstallerPackageName", new Class[]{String.class});
             installedFrom = (String) MTH
-                    .invoke(LeChuckApplication.getApplication().getPackageManager(), LeChuckApplication.getApplication().getPackageName());
+                    .invoke(AppApplication.getApplication().getPackageManager(), AppApplication.getApplication().getPackageName());
         } catch (Throwable e) {
         }
         installedFrom = "MARKET";
@@ -71,10 +71,10 @@ public class Utilities {
     }
 
     public static String getAppVersionName() {
-        PackageManager pm = LeChuckApplication.getApplication().getPackageManager();
+        PackageManager pm = AppApplication.getApplication().getPackageManager();
         PackageInfo pi;
         try {
-            pi = pm.getPackageInfo(LeChuckApplication.getApplication().getPackageName(), 0);
+            pi = pm.getPackageInfo(AppApplication.getApplication().getPackageName(), 0);
             return pi.versionName;
         } catch (NameNotFoundException e) {
             e.printStackTrace();

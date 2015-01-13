@@ -12,7 +12,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.olx.olx.LeChuckApplication;
+import com.lookeate.android.AppApplication;
 
 @SuppressWarnings("deprecation")
 public class ResourcesHelper {
@@ -24,11 +24,11 @@ public class ResourcesHelper {
     }
 
     public static void setScreenSize() {
-        ((WindowManager) LeChuckApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+        ((WindowManager) AppApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                 .getMetrics(metrics);
-        screenSize.x = ((WindowManager) LeChuckApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+        screenSize.x = ((WindowManager) AppApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                 .getWidth();
-        screenSize.y = ((WindowManager) LeChuckApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+        screenSize.y = ((WindowManager) AppApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                 .getHeight();
     }
 
@@ -46,19 +46,19 @@ public class ResourcesHelper {
     }
 
     public static String getString(int resource) {
-        return LeChuckApplication.getApplication().getString(resource);
+        return AppApplication.getApplication().getString(resource);
     }
 
     public static Resources getResources() {
-        return LeChuckApplication.getApplication().getResources();
+        return AppApplication.getApplication().getResources();
     }
 
     public static String[] getStringArray(int resource) {
-        return LeChuckApplication.getApplication().getResources().getStringArray(resource);
+        return AppApplication.getApplication().getResources().getStringArray(resource);
     }
 
     public static int getDimensionPixelSize(int resource) {
-        LeChuckApplication app = LeChuckApplication.getApplication();
+        AppApplication app = AppApplication.getApplication();
         TypedValue rawValue = new TypedValue();
         app.getResources().getValue(resource, rawValue, true);
         if (rawValue.type == TypedValue.TYPE_FIRST_INT) {
@@ -71,7 +71,7 @@ public class ResourcesHelper {
     }
 
     public static Drawable getDrawable(int resource) {
-        return LeChuckApplication.getApplication().getResources().getDrawable(resource);
+        return AppApplication.getApplication().getResources().getDrawable(resource);
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)

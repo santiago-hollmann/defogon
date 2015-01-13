@@ -1,18 +1,14 @@
 package com.lookeate.android.ui.activities;
 
+import android.lookeate.com.lookeate.R;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 
-import com.olx.olx.R;
-import com.olx.olx.helpers.DialogHelper;
-import com.olx.olx.interfaces.IError;
-import com.olx.olx.model.ResolvedLocation;
+import com.lookeate.android.helpers.DialogHelper;
+import com.lookeate.android.interfaces.IError;
 
 public abstract class BaseActivity extends ServiceActivity implements IError {
-
-    public final static int ERROR_DIALOG = -1001;
-
     private void initActionBar() {
         ActionBar bar = getSupportActionBar();
         if (bar != null) {
@@ -69,13 +65,4 @@ public abstract class BaseActivity extends ServiceActivity implements IError {
             DialogHelper.showError(this, title, message, dialogId);
         }
     }
-
-    @Override
-    public void onLocationChanged(ResolvedLocation location) {
-    }
-
-    @Override
-    public void onLocationFailed() {
-    }
-
 }

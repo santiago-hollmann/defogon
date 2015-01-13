@@ -1,6 +1,5 @@
 package com.lookeate.android.interfaces;
 
-import android.view.Menu;
 import android.view.View;
 
 import com.google.android.gms.location.LocationListener;
@@ -39,8 +38,6 @@ public interface IServiceActivity {
 
     void unlockMenu();
 
-    boolean isShowingDrawer();
-
     boolean isMyRequest(APIResponse response, String requestId);
 
     void processError(APIResponse response);
@@ -50,10 +47,6 @@ public interface IServiceActivity {
     void stopRequestLocation();
 
     boolean isLocationServiceEnabled();
-
-    void toggleSwitch(Menu menu, boolean show);
-
-    void openDrawerShowCase();
 
     boolean isSearchBarActive();
 

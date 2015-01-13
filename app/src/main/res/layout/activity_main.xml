@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.olx.olx.ui.views.CustomDrawerLayout
+        android:id="@+id/drawer_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <com.olx.olx.ui.views.NetworkErrorBannerView
+                android:id="@+id/main_networkerror_banner"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/main_networkerror_banner_height"
+                android:background="@color/networkerror_banner_background"
+                android:visibility="gone" />
+
+            <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/srl_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/white_background">
+
+                <FrameLayout
+                    android:id="@+id/activity_fragment_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v4.widget.SwipeRefreshLayout>
+        </LinearLayout>
+
+        <com.olx.olx.ui.views.LeftMenuView
+            android:id="@+id/left_drawer"
+            android:layout_width="@dimen/menu_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@color/white" />
+
+    </com.olx.olx.ui.views.CustomDrawerLayout>
+
+    <LinearLayout
+        android:id="@+id/updating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="@color/translucent_black"
+        android:visibility="gone">
+
+        <ProgressBar
+            style="?android:attr/progressBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/small_padding" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="2dip"
+            android:singleLine="true"
+            android:text="@string/connecting"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</FrameLayout>

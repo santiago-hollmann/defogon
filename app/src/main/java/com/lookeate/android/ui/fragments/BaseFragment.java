@@ -377,10 +377,6 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
         return super.onCreateAnimation(transit, enter, nextAnim);
     }
 
-    public void openDrawerShowCase() {
-        activity.openDrawerShowCase();
-    }
-
     @Override
     public void onReload() {
 
