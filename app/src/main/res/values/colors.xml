@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- BASIC COLORS -->
+    <color name="light_gray">#E6E6E6</color>
+    <color name="white">#FFFFFF</color>
+
+
+    <!-- FORMS -->
+    <color name="forms_light_text_color">#FFD2D2D2</color>
+    <color name="forms_gray_text_color">#FFC5C5C5</color>
+    <color name="forms_text_color">#FF494949</color>
+    <color name="forms_pressed_color">#FFF6F8E5</color>
+    <color name="forms_green_separator">#FFAABB00</color>
+
+    <!-- SYSTEM -->
+    <color name="action_bar_background">@color/white</color>
+    <color name="blue">#2973D2</color>
+
+
+</resources>

@@ -1,8 +1,113 @@
-<resources>
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="actionBarWidgetTheme">@style/Theme.AppCompat.Light</item>
+    </style>
+
+    <style name="AppThemeDialogWhenLarge" parent="@style/Theme.AppCompat.Light.DialogWhenLarge">
+        <item name="android:windowBackground">@color/white</item>
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="windowActionBarOverlay">false</item>
+        <item name="actionBarWidgetTheme">@style/Theme.AppCompat.Light</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="@style/Theme.AppCompat.Light">
+        <item name="windowActionBar">false</item>
+    </style>
+
+    <style name="AppTheme.Transparent" parent="@style/Theme.Base">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+
+    <style name="Widget.Styled.ActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="background">@color/action_bar_background</item>
+        <item name="subtitleTextStyle">@style/SubTitleText</item>
+    </style>
+
+    <style name="progressbar">
+        <item name="android:indeterminateOnly">false</item>
+        <item name="android:progressDrawable">@drawable/progress_horizontal</item>
+        <item name="android:minHeight">2dp</item>
+        <item name="android:maxHeight">2dp</item>
+    </style>
+
+    <style name="SubTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle" />
+
+    <style name="AppTheme.Dialog" parent="android:style/Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.Dialog.ButtonBar" />
+
+    <style name="AppTheme.Dialog.ButtonBar.AlertDialog">
+        <item name="android:background">@null</item>
+    </style>
+
+    <style name="Widget" />
+
+    <style name="Widget.Button">
+        <item name="android:focusable">true</item>
+        <item name="android:clickable">true</item>
+        <item name="android:textAppearance">?android:attr/textAppearanceSmallInverse</item>
+        <item name="android:gravity">center_vertical|center_horizontal</item>
+    </style>
+
+    <style name="AppTheme.Dialog.Button" parent="Widget.Button">
+        <item name="android:textColor">@color/text_selector</item>
+        <item name="android:minHeight">48dip</item>
+        <item name="android:minWidth">64dip</item>
+    </style>
+
+    <style name="AppTheme.Dialog.Button.Borderless">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:background">@drawable/list_selector</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingLeft">4dip</item>
+        <item name="android:paddingRight">4dip</item>
+    </style>
+
+    <style name="AppTheme.Dialog.Button.Borderless.Small">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="Widget.CirclePageIndicator" parent="Widget">
+        <item name="centered">@bool/default_circle_indicator_centered</item>
+        <item name="fillColor">@color/default_circle_indicator_fill_color</item>
+        <item name="pageColor">@color/default_circle_indicator_page_color</item>
+        <item name="indicatorOrientation">@integer/default_circle_indicator_orientation</item>
+        <item name="radius">@dimen/default_circle_indicator_radius</item>
+        <item name="snap">@bool/default_circle_indicator_snap</item>
+        <item name="strokeColor">@color/default_circle_indicator_stroke_color</item>
+        <item name="strokeWidth">@dimen/default_circle_indicator_stroke_width</item>
+    </style>
+
+    <style name="Animations" />
+
+    <style name="Animations.PopDownMenu">
+        <item name="@android:windowEnterAnimation">@anim/animation_fade_in</item>
+        <item name="@android:windowExitAnimation">@anim/animation_fade_out</item>
+    </style>
+
+    <style name="Animations.Jump">
+        <item name="@android:windowEnterAnimation">@anim/grow</item>
+        <item name="@android:windowExitAnimation">@anim/shrink</item>
+    </style>
+
+    <style name="TwoWayView">
+        <item name="android:orientation">horizontal</item>
+    </style>
+
+    <style name="noAnimTheme" parent="AppTheme">
+        <item name="android:windowAnimationStyle">@null</item>
     </style>
 
 </resources>

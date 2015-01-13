@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Lookeate</string>
+    <string name="date_today">Today</string>
+    <string name="date_yesterday">Yesterday</string>
+    <string name="date_days_ago">%1$s days ago</string>
+    <string name="date_just_now">Just now</string>
+    <string name="date_minutes_ago">%1%s minutes ago</string>
+    <string name="date_hours_ago">%1$s hours ago</string>
+    <string name="toggle_off">Off</string>
+    <string name="toggle_on">On</string>
+    <string name="check_your_internet_connection">Check your Internet connection</string>
+    <string name="ok">OK</string>
+    <string name="error_loading_content">Error loading the content</string>
 </resources>
