@@ -5,11 +5,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import com.olx.olx.adapters.FastListAdapter.OnClickListener;
-
 public abstract class FastArrayAdapter<T> extends ArrayAdapter<T> {
 
-    private OnClickListener<T> mListenerClick;
+    private FastListAdapter.OnClickListener<T> mListenerClick;
 
     public FastArrayAdapter(Context context, T[] objects) {
         super(context, 0);
@@ -48,7 +46,7 @@ public abstract class FastArrayAdapter<T> extends ArrayAdapter<T> {
         }
     }
 
-    public void setOnClickListener(OnClickListener<T> listener) {
+    public void setOnClickListener(FastListAdapter.OnClickListener<T> listener) {
         mListenerClick = listener;
     }
 

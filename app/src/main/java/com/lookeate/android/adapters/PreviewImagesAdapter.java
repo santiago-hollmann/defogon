@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.view.ViewGroup;
 
-import com.olx.olx.ui.fragments.PreviewImageFragment;
+import com.lookeate.android.ui.fragments.PreviewImageFragment;
 
 public class PreviewImagesAdapter extends FragmentStatePagerAdapter {
     private String[] images;

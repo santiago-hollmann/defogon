@@ -1,6 +1,7 @@
 package com.lookeate.android.adapters;
 
 import android.content.Context;
+import android.lookeate.com.lookeate.R;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -10,9 +11,8 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import com.olx.olx.LeChuckApplication;
-import com.olx.olx.R;
-import com.olx.olx.helpers.ResourcesHelper;
+import com.lookeate.android.AppApplication;
+import com.lookeate.android.helpers.ResourcesHelper;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;
 
@@ -32,8 +32,8 @@ public class ImagesPagerAdapter extends PagerAdapter implements OnClickListener,
     public ImagesPagerAdapter(String[] images) {
         super();
         this.images = images;
-        this.inflater = (LayoutInflater) LeChuckApplication.getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        this.padding = ResourcesHelper.getDimensionPixelSize(R.dimen.item_image_padding);
+        this.inflater = (LayoutInflater) AppApplication.getApplication().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.padding = ResourcesHelper.getDimensionPixelSize(R.dimen.small_padding);
     }
 
     @Override
@@ -62,10 +62,10 @@ public class ImagesPagerAdapter extends PagerAdapter implements OnClickListener,
         image.setTag(position);
         image.setOnClickListener(this);
         if (position == 0) {
-            Picasso.with(LeChuckApplication.getApplication()).load(images[position]).fit().centerCrop().skipMemoryCache().noFade()
+            Picasso.with(AppApplication.getApplication()).load(images[position]).fit().centerCrop().skipMemoryCache().noFade()
                     .into(image, this);
         } else {
-            Picasso.with(LeChuckApplication.getApplication()).load(images[position]).fit().centerCrop().skipMemoryCache().into(image);
+            Picasso.with(AppApplication.getApplication()).load(images[position]).fit().centerCrop().skipMemoryCache().into(image);
         }
         ((ViewPager) container).addView(itemView);
         return itemView;
