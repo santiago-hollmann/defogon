@@ -5,7 +5,6 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.PointF;
 import android.graphics.drawable.Drawable;
-import android.lookeate.com.lookeate.R;
 import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
@@ -14,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.ProgressBar;
 
+import com.lookeate.android.R;
 import com.lookeate.android.helpers.ResourcesHelper;
 import com.lookeate.android.util.ImageLoader;
 import com.lookeate.android.util.ImageUtils;

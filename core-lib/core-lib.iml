@@ -93,7 +93,7 @@
     <orderEntry type="library" exported="" name="okio-1.0.1" level="project" />
     <orderEntry type="library" exported="" name="bolts-android-1.1.4" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.0.0" level="project" />
-    <orderEntry type="library" exported="" name="play-services-5.0.89" level="project" />
+    <orderEntry type="library" exported="" name="play-services-6.1.71" level="project" />
     <orderEntry type="module" module-name="api" exported="" />
   </component>
 </module>

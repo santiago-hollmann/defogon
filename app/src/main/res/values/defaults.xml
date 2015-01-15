@@ -24,8 +24,6 @@
     <dimen name="default_title_indicator_title_padding">5dp</dimen>
     <dimen name="default_title_indicator_top_padding">7dp</dimen>
 
-    <string name="app_name">OLX</string>
-
     <!-- UNICODE CHARACTERS -->
     <string name="arrow" translatable="false">&#187; </string>
     <string name="dots" translatable="false">&#8230;</string>

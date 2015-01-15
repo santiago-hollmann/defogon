@@ -30,7 +30,7 @@ dependencies {
     //Libraries on the MAVEN-CENTRAL repository
     compile 'com.android.support:support-v4:21.+'
     compile 'com.google.code.gson:gson:2.2.+'
-    compile 'com.google.android.gms:play-services:5.0.89' //don't use '+'; not even for the build number
+    compile 'com.google.android.gms:play-services:6.1.+' //don't use '+'; not even for the build number
     compile 'com.squareup.retrofit:retrofit:1.6.+'
     compile 'com.squareup.okhttp:okhttp:2.0.+'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.+'

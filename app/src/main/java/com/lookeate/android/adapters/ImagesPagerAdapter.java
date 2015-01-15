@@ -1,7 +1,6 @@
 package com.lookeate.android.adapters;
 
 import android.content.Context;
-import android.lookeate.com.lookeate.R;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -12,6 +11,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import com.lookeate.android.AppApplication;
+import com.lookeate.android.R;
 import com.lookeate.android.helpers.ResourcesHelper;
 import com.squareup.picasso.Callback;
 import com.squareup.picasso.Picasso;

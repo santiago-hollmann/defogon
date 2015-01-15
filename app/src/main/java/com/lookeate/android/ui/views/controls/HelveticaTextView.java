@@ -3,11 +3,11 @@ package com.lookeate.android.ui.views.controls;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Typeface;
-import android.lookeate.com.lookeate.R;
 import android.util.AttributeSet;
 import android.widget.TextView;
 
 import com.lookeate.android.AppApplication;
+import com.lookeate.android.R;
 
 public class HelveticaTextView extends TextView {
 
