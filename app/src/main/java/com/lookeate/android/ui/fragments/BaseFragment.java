@@ -2,7 +2,6 @@ package com.lookeate.android.ui.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.lookeate.com.lookeate.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
@@ -15,6 +14,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 
 import com.lookeate.android.AppApplication;
+import com.lookeate.android.R;
 import com.lookeate.android.core_lib.arguments.ServiceArguments;
 import com.lookeate.android.core_lib.helpers.LogInternal;
 import com.lookeate.android.core_lib.network.NetworkUtilities;

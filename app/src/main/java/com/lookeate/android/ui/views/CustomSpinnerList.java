@@ -1,7 +1,6 @@
 package com.lookeate.android.ui.views;
 
 import android.content.Context;
-import android.lookeate.com.lookeate.R;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +8,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+
+import com.lookeate.android.R;
 
 public class CustomSpinnerList extends CustomPopupWindow {
     private static final int FIX_HEIGHT = 87;

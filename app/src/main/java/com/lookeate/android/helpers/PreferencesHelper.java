@@ -1,11 +1,11 @@
 package com.lookeate.android.helpers;
 
 import android.content.SharedPreferences;
-import android.lookeate.com.lookeate.R;
 import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
 import com.lookeate.android.AppApplication;
+import com.lookeate.android.R;
 import com.lookeate.android.util.Constants;
 
 public class PreferencesHelper {

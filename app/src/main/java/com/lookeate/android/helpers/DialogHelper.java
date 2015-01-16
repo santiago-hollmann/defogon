@@ -1,11 +1,11 @@
 package com.lookeate.android.helpers;
 
 import android.app.Dialog;
-import android.lookeate.com.lookeate.R;
 import android.os.Handler;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 
+import com.lookeate.android.R;
 import com.lookeate.android.core_lib.helpers.LogInternal;
 import com.lookeate.android.ui.fragments.CustomDialogFragment;
 import com.lookeate.android.util.Constants;

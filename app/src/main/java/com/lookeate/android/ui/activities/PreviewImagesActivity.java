@@ -2,13 +2,13 @@ package com.lookeate.android.ui.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.lookeate.com.lookeate.R;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
+import com.lookeate.android.R;
 import com.lookeate.android.adapters.PreviewImagesAdapter;
 import com.lookeate.android.ui.views.controls.ImagesPageIndicator;
 import com.lookeate.android.ui.views.controls.ImagesViewPager;

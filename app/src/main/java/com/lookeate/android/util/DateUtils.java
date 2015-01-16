@@ -1,8 +1,9 @@
 package com.lookeate.android.util;
 
 import android.content.Context;
-import android.lookeate.com.lookeate.R;
 import android.text.format.DateFormat;
+
+import com.lookeate.android.R;
 
 import java.util.Date;
 

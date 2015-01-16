@@ -1,7 +1,6 @@
 package com.lookeate.android.ui.activities;
 
 import android.content.Intent;
-import android.lookeate.com.lookeate.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +9,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
+import com.lookeate.android.R;
 import com.lookeate.android.core_lib.network.NetworkUtilities;
 import com.lookeate.android.helpers.BundleHelper;
 import com.lookeate.android.interfaces.IFragment;

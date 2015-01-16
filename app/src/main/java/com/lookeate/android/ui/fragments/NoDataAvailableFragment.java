@@ -1,6 +1,5 @@
 package com.lookeate.android.ui.fragments;
 
-import android.lookeate.com.lookeate.R;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.LayoutInflater;
@@ -9,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.lookeate.android.AppApplication;
+import com.lookeate.android.R;
 import com.lookeate.android.interfaces.IOnReload;
 import com.lookeate.android.util.Constants;
 

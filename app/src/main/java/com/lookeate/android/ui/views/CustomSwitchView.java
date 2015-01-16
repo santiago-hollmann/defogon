@@ -8,8 +8,8 @@ import android.util.AttributeSet;
 import android.widget.CompoundButton;
 import android.widget.LinearLayout;
 import android.widget.Switch;
-import android.lookeate.com.lookeate.R;
 
+import com.lookeate.android.R;
 import com.lookeate.android.util.Constants;
 
 @SuppressLint("NewApi")

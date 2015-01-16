@@ -1,10 +1,10 @@
 package com.lookeate.android.ui.activities;
 
-import android.lookeate.com.lookeate.R;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 
+import com.lookeate.android.R;
 import com.lookeate.android.helpers.DialogHelper;
 import com.lookeate.android.interfaces.IError;
 

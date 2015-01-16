@@ -1,12 +1,12 @@
 package com.lookeate.android.ui.fragments;
 
-import android.lookeate.com.lookeate.R;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.lookeate.android.R;
 import com.lookeate.android.ui.views.controls.TouchImageView;
 import com.squareup.picasso.Picasso;
 
