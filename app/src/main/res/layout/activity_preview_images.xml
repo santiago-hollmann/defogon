@@ -4,12 +4,12 @@
     android:layout_height="match_parent"
     android:background="@color/black" >
 
-    <com.olx.olx.ui.views.controls.ImagesViewPager
+    <com.lookeate.android.ui.views.controls.ImagesViewPager
         android:id="@+id/libuic_activity_pager_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <com.olx.olx.ui.views.controls.ImagesPageIndicator
+    <com.lookeate.android.ui.views.controls.ImagesPageIndicator
         android:id="@+id/indicator"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

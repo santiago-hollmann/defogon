@@ -4,7 +4,7 @@ import android.content.Context;
 
 public class CachingDbHelper extends DBHelper {
     private final static int DB_VERSION = 4;
-    private final static String DB_NAME = "olxDatabase";
+    private final static String DB_NAME = "database";
     private final static String TABLE_NAME = "cache";
     private final static String COLUMN_KEY = "cacheKey";
     private final static String COLUMN_DATA = "cacheData";

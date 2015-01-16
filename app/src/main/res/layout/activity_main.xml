@@ -4,37 +4,23 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.olx.olx.ui.views.CustomDrawerLayout
-        android:id="@+id/drawer_layout"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <LinearLayout
+        <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/srl_container"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:background="@color/white">
 
-            <com.olx.olx.ui.views.NetworkErrorBannerView
-                android:id="@+id/main_networkerror_banner"
+            <FrameLayout
+                android:id="@+id/activity_fragment_layout"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/finger_size"
-                android:background="@color/light_gray"
-                android:visibility="gone" />
-
-            <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:id="@+id/srl_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/white">
-
-                <FrameLayout
-                    android:id="@+id/activity_fragment_layout"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
-            </android.support.v4.widget.SwipeRefreshLayout>
-        </LinearLayout>
-
-    </com.olx.olx.ui.views.CustomDrawerLayout>
+                android:layout_height="match_parent" />
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/updating"
