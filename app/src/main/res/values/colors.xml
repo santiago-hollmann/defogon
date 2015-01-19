@@ -5,9 +5,14 @@
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
     <color name="translucent_black">#66000000</color>
+    <color name="translucent_subtle_black">#20000000</color>
+    <color name="translucent_blue">#602973D2</color>
     <color name="orange">#FFFF7900</color>
+    <color name="light_orange">#ffffa931</color>
     <color name="blue">#2973D2</color>
+    <color name="dark_gray">#FF494949</color>
     <color name="light_blue">#ff318cff</color>
+    <color name="very_light_blue">#ff6ab3ff</color>
     <color name="dark_blue">#ff1b4b89</color>
 
 
@@ -19,7 +24,7 @@
     <color name="forms_green_separator">#FFAABB00</color>
 
     <!-- SYSTEM -->
-    <color name="action_bar_background">@color/white</color>
+    <color name="action_bar_background">@color/blue</color>
     <color name="text_primary">#FF505050</color>
     <color name="text_primary_light">#ff878787</color>
     <color name="text_primary_pressed">@color/white</color>

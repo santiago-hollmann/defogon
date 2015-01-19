@@ -3,11 +3,11 @@
 
     <style name="Theme.Base" parent="android:Theme"></style>
 
-    <style name="AppTheme" parent="@style/Theme.AppCompat.Light">
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryDark">@color/dark_blue</item>
+        <item name="colorAccent">@color/light_blue</item>
         <item name="android:windowBackground">@color/white</item>
-        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
-        <item name="windowActionBarOverlay">false</item>
-        <item name="actionBarWidgetTheme">@style/Theme.AppCompat.Light</item>
     </style>
 
     <style name="AppThemeDialogWhenLarge" parent="@style/Theme.AppCompat.Light.DialogWhenLarge">

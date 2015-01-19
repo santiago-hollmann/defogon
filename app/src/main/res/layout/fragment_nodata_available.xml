@@ -24,7 +24,7 @@
             android:paddingRight="@dimen/big_distance"
             android:text="@string/check_your_internet_connection"
             android:textColor="@color/blue"
-            android:textSize="@dimen/medium_text_size" />
+            android:textSize="@dimen/medium_text" />
     </ScrollView>
 
 </LinearLayout>

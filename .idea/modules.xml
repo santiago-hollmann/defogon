@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Lookeate.iml" filepath="$PROJECT_DIR$/Lookeate.iml" />
       <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/architecture.iml" filepath="$PROJECT_DIR$/architecture.iml" />
       <module fileurl="file://$PROJECT_DIR$/core-lib/core-lib.iml" filepath="$PROJECT_DIR$/core-lib/core-lib.iml" />
     </modules>
   </component>

@@ -13,9 +13,12 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.content.LocalBroadcastManager;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.Menu;
@@ -52,7 +55,8 @@ import java.util.UUID;
 public abstract class ServiceActivity extends ActionBarActivity
         implements DialogClickListener, IServiceActivity, Toolbar.OnMenuItemClickListener, GooglePlayServicesClient.ConnectionCallbacks,
         GooglePlayServicesClient.OnConnectionFailedListener, LocationListener, OnRefreshListener {
-
+    private static final int DRAWER_CLOSED = 0;
+    private static final int DRAWER_OPENED = 1;
     private final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     private static final int DIALOG_LOGOUT = 8900;
     private static final String REQUEST_IDS = "requestIds";
@@ -82,6 +86,8 @@ public abstract class ServiceActivity extends ActionBarActivity
     private boolean isSearchBarActive;
 
     public SwipeRefreshLayout swipeLayout;
+    private ActionBarDrawerToggle drawerToggle;
+    private DrawerLayout drawer;
 
     public ServiceActivity() {
         app = AppApplication.getApplication();
@@ -121,11 +127,75 @@ public abstract class ServiceActivity extends ActionBarActivity
         receiver = new LocalReceiver();
         registerReceiver();
 
+        setupDrawerToggle();
         setUpLocationClient();
 
         swipeLayout = (SwipeRefreshLayout) findViewById(R.id.srl_container);
         swipeLayout.setOnRefreshListener(this);
-        swipeLayout.setColorScheme(R.color.blue, R.color.white, R.color.orange);
+        swipeLayout.setColorScheme(R.color.blue, R.color.light_blue, R.color.dark_blue);
+    }
+
+    private void setupDrawerToggle() {
+        drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawerToggle = new ActionBarDrawerToggle(this, drawer, R.string.drawer_open, R.string.drawer_close) {
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+                super.onDrawerStateChanged(newState);
+            }
+
+            @Override
+            public void onDrawerSlide(View drawerView, float slideOffset) {
+                super.onDrawerSlide(drawerView, slideOffset);
+
+                if (slideOffset == DRAWER_CLOSED) {
+                    onCloseDrawer();
+                } else if (slideOffset == DRAWER_OPENED) {
+                    slidingDrawer = false;
+                } else if (!slidingDrawer) {
+                    onMoveDrawer();
+                }
+            }
+        };
+
+        drawerToggle.setDrawerIndicatorEnabled(true);
+        drawer.setDrawerListener(drawerToggle);
+    }
+
+    public void closeDrawer() {
+        drawer.closeDrawer(R.layout.fragment_drawer);
+    }
+
+    public void openDrawer() {
+        drawer.openDrawer(R.layout.fragment_drawer);
+    }
+
+    private void onCloseDrawer() {
+        showingDrawer = false;
+        slidingDrawer = false;
+        String tempTitle = getSupportActionBar().getTitle().toString();
+        if (tempTitle.equalsIgnoreCase(Constants.EMPTY_STRING)) {
+            getSupportActionBar().setTitle(mTitle);
+        }
+        supportInvalidateOptionsMenu();
+    }
+
+    private void onMoveDrawer() {
+        slidingDrawer = true;
+        supportInvalidateOptionsMenu();
+        if (!getSupportActionBar().getTitle().equals(Constants.EMPTY_STRING)) {
+            mTitle = getSupportActionBar().getTitle();
+        }
+        if (!showingDrawer) {
+            showingDrawer = true;
+            mTitle = getSupportActionBar().getTitle();
+        }
+
+        getSupportActionBar().setTitle(Constants.EMPTY_STRING);
+
+        if (getCurrentFocus() != null) {
+            AppApplication.hideKeyboard(getCurrentFocus().getWindowToken());
+        }
     }
 
     private void setUpLocationClient() {
@@ -243,6 +313,7 @@ public abstract class ServiceActivity extends ActionBarActivity
     @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
     }
 
     @Override
@@ -310,6 +381,9 @@ public abstract class ServiceActivity extends ActionBarActivity
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
 
@@ -339,11 +413,6 @@ public abstract class ServiceActivity extends ActionBarActivity
         if (dialogId == DIALOG_LOGOUT) {
             // Do something
         }
-    }
-
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
     }
 
     @Override
@@ -508,19 +577,61 @@ public abstract class ServiceActivity extends ActionBarActivity
 
     @Override
     public void lockMenu() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setHomeButtonEnabled(false);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
-        }
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+        getSupportActionBar().setHomeButtonEnabled(false);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+        drawerToggle.setDrawerIndicatorEnabled(false);
     }
 
     @Override
     public void unlockMenu() {
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().setHomeButtonEnabled(true);
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        drawerToggle.setDrawerIndicatorEnabled(true);
+    }
+
+    public void showBackButton() {
+        drawerToggle.setDrawerIndicatorEnabled(false);
+    }
+
+    public boolean isDrawerUnlocked() {
+        return drawerToggle.isDrawerIndicatorEnabled();
+    }
+
+    public boolean canToggleDrawer() {
+        return isDrawerEnabled && isDrawerUnlocked() && !isSearchBarActive();
+    }
+
+    public boolean toggleDrawer() {
+        if (canToggleDrawer()) {
+            if (isDrawerOpen()) {
+                closeDrawer();
+            } else {
+                openDrawer();
+            }
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isDrawerOpen() {
+        return drawer.isDrawerVisible(GravityCompat.START);
+    }
+
+    private class CloseDrawerAnimation implements Runnable {
+        @Override
+        public void run() {
+            closeDrawer();
         }
     }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        drawerToggle.syncState();
+    }
+
 
     @Override
     public void onSelectedItem(int dialogId, int position, String item) {
@@ -606,7 +717,7 @@ public abstract class ServiceActivity extends ActionBarActivity
     }
 
     private boolean isRegularAnimatedView() {
-        // Instead of ServiceAcitivty, we should use any other activity which should be animated as the other ones
+        //TODO Remove ServiceActivity and put HomeActivity
         return !(this instanceof ServiceActivity);
     }
 
@@ -657,5 +768,10 @@ public abstract class ServiceActivity extends ActionBarActivity
         gpsLocation = location;
         DialogHelper.hideProgress(this);
         getLocationGPS(location.getLatitude(), location.getLongitude());
+    }
+
+
+    public ActionBarDrawerToggle getDrawerToggle() {
+        return drawerToggle;
     }
 }

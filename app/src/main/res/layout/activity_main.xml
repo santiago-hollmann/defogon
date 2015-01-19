@@ -4,23 +4,37 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <android.support.v4.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
 
-        <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/srl_container"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/white">
+            android:orientation="vertical">
 
-            <FrameLayout
-                android:id="@+id/activity_fragment_layout"
+            <android.support.v4.widget.SwipeRefreshLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:id="@+id/srl_container"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
-        </android.support.v4.widget.SwipeRefreshLayout>
-    </LinearLayout>
+                android:layout_height="match_parent"
+                android:background="@color/white">
+
+                <FrameLayout
+                    android:id="@+id/activity_fragment_layout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/fragment_drawer"
+            android:name="com.lookeate.android.ui.fragments.DrawerFragment"
+            android:layout_width="@dimen/drawer_width"
+            android:layout_height="match_parent"
+            android:layout_gravity="left|start" />
+    </android.support.v4.widget.DrawerLayout>
 
     <LinearLayout
         android:id="@+id/updating"
