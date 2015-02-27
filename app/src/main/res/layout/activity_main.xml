@@ -30,7 +30,7 @@
 
         <fragment
             android:id="@+id/fragment_drawer"
-            android:name="com.lookeate.android.ui.fragments.DrawerFragment"
+            android:name="com.shollmann.android.fogon.ui.fragments.DrawerFragment"
             android:layout_width="@dimen/drawer_width"
             android:layout_height="match_parent"
             android:layout_gravity="left|start" />

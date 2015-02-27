@@ -17,7 +17,7 @@
             android:padding="@dimen/extra_big_padding"
             android:layout_height="match_parent">
 
-            <com.lookeate.android.ui.views.controls.HelveticaTextView
+            <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
@@ -32,7 +32,7 @@
                 android:layout_height="0.75dp"
                 android:background="@color/dark_gray" />
 
-            <com.lookeate.android.ui.views.controls.HelveticaTextView
+            <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                 android:id="@+id/drawer_home"
                 android:background="@drawable/drawer_selector"
                 android:clickable="true"
@@ -44,7 +44,7 @@
                 app:fontType="Light"
                 android:textSize="@dimen/drawer_text" />
 
-            <com.lookeate.android.ui.views.controls.HelveticaTextView
+            <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                 android:id="@+id/drawer_inspire"
                 android:layout_width="match_parent"
                 android:background="@drawable/drawer_selector"
@@ -56,7 +56,7 @@
                 app:fontType="Light"
                 android:textSize="@dimen/drawer_text" />
 
-            <com.lookeate.android.ui.views.controls.HelveticaTextView
+            <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                 android:id="@+id/drawer_login"
                 android:visibility="gone"
                 android:layout_width="match_parent"
@@ -75,7 +75,7 @@
                 android:visibility="visible"
                 android:layout_height="wrap_content">
 
-                <com.lookeate.android.ui.views.controls.HelveticaTextView
+                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                     android:layout_marginTop="@dimen/big_distance"
                     android:layout_width="match_parent"
                     android:id="@+id/drawer_username"
@@ -93,7 +93,7 @@
                     android:layout_height="0.75dp"
                     android:background="@color/dark_gray" />
 
-                <com.lookeate.android.ui.views.controls.HelveticaTextView
+                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                     android:id="@+id/drawer_my_reservations"
                     android:layout_width="match_parent"
                     android:background="@drawable/drawer_selector"
@@ -105,7 +105,7 @@
                     app:fontType="Light"
                     android:textSize="@dimen/drawer_text" />
 
-                <com.lookeate.android.ui.views.controls.HelveticaTextView
+                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                     android:id="@+id/drawer_my_favorite_styles"
                     android:layout_width="match_parent"
                     android:background="@drawable/drawer_selector"
@@ -117,7 +117,7 @@
                     app:fontType="Light"
                     android:textSize="@dimen/drawer_text" />
 
-                <com.lookeate.android.ui.views.controls.HelveticaTextView
+                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                     android:id="@+id/drawer_my_favorite_professionals"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -127,7 +127,7 @@
                     app:fontType="Light"
                     android:textSize="@dimen/drawer_text" />
 
-                <com.lookeate.android.ui.views.controls.HelveticaTextView
+                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
                     android:id="@+id/drawer_my_favorite_logout"
                     android:layout_width="match_parent"
                     android:background="@drawable/drawer_selector"
@@ -143,7 +143,7 @@
     </ScrollView>
 
 
-    <com.lookeate.android.ui.views.controls.HelveticaTextView
+    <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
         android:layout_marginTop="@dimen/big_distance"
         android:id="@+id/drawer_offer_services"
         android:layout_width="match_parent"
