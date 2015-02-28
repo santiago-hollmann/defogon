@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:padding="@dimen/medium_padding"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:padding="@dimen/small_padding"
+        android:id="@+id/song_item_author_name"
+        android:textStyle="bold"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/medium_text"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:padding="@dimen/small_padding"
+        android:id="@+id/song_item_chords"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/big_text"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>

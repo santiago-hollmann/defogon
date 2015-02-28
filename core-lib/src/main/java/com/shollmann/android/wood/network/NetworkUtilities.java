@@ -7,7 +7,6 @@ import android.os.AsyncTask;
 import android.telephony.TelephonyManager;
 import android.text.Html;
 
-import com.crashlytics.android.Crashlytics;
 import com.shollmann.android.wood.Constants;
 import com.shollmann.android.wood.CoreLibApplication;
 import com.lookeate.java.api.model.APIResponse;
@@ -74,8 +73,6 @@ public class NetworkUtilities {
                 return manager.getActiveNetworkInfo().isConnectedOrConnecting();
             }
         } catch (Exception e) {
-            Crashlytics.log("manager: " + manager);
-            Crashlytics.logException(e);
             return false;
         }
         return false;
@@ -98,8 +95,6 @@ public class NetworkUtilities {
                 return (isWifiAvailable || isWimaxAvailable);
             }
         } catch (Exception e) {
-            Crashlytics.log("manager: " + manager);
-            Crashlytics.logException(e);
             return false;
         }
         return false;
@@ -116,9 +111,6 @@ public class NetworkUtilities {
                 }
             }
         } catch (Exception e) {
-            Crashlytics.log("manager: " + manager);
-            Crashlytics.logException(e);
-
             return false;
         }
 

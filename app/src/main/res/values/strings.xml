@@ -16,12 +16,10 @@
     <string name="connecting">Connecting...</string>
     <string name="autolocating">Autolocating...</string>
     <string name="language_code">languageCode</string>
-    <string name="title_activity_home">HomeActivity</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="splash">Splash!</string>
     <string name="action_settings">Settings</string>
-    <string name="title_activity_splash">SplashActivity</string>
     <string name="drawer_open">Open Drawer</string>
     <string name="drawer_close">Close Drawer</string>
+    <string name="word_word">%1$s - %2$s</string>
+    <string name="look_for_song">Search for a song</string>
 
 </resources>

@@ -65,7 +65,6 @@ public abstract class ServiceActivity extends ActionBarActivity
     private LocalReceiver receiver;
     protected FrameLayout main;
     private AppApplication app;
-    private View updating;
 
     protected boolean fullScreen = false;
     private boolean hideUpdating = false;
@@ -116,9 +115,6 @@ public abstract class ServiceActivity extends ActionBarActivity
         setContentView(R.layout.activity_main);
         main = (FrameLayout) findViewById(R.id.main);
 
-        updating = findViewById(R.id.updating);
-        updating.setVisibility(View.GONE);
-
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             getSupportActionBar().setHomeButtonEnabled(true);
@@ -132,7 +128,7 @@ public abstract class ServiceActivity extends ActionBarActivity
 
         swipeLayout = (SwipeRefreshLayout) findViewById(R.id.srl_container);
         swipeLayout.setOnRefreshListener(this);
-        swipeLayout.setColorScheme(R.color.blue, R.color.light_blue, R.color.dark_blue);
+        swipeLayout.setColorScheme(R.color.primary, R.color.accent, R.color.secondary);
     }
 
     private void setupDrawerToggle() {

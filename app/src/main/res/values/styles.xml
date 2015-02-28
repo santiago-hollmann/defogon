@@ -4,9 +4,9 @@
     <style name="Theme.Base" parent="android:Theme"></style>
 
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/blue</item>
-        <item name="colorPrimaryDark">@color/dark_blue</item>
-        <item name="colorAccent">@color/light_blue</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/secondary</item>
+        <item name="colorAccent">@color/accent</item>
         <item name="android:windowBackground">@color/white</item>
     </style>
 
@@ -71,7 +71,6 @@
 
     <style name="AppTheme.Dialog.Button.Borderless">
         <item name="android:textColor">@color/text_primary</item>
-        <item name="android:background">@drawable/list_selector</item>
         <item name="android:textSize">16sp</item>
         <item name="android:paddingLeft">4dip</item>
         <item name="android:paddingRight">4dip</item>
@@ -111,5 +110,4 @@
     <style name="noAnimTheme" parent="AppTheme">
         <item name="android:windowAnimationStyle">@null</item>
     </style>
-
 </resources>

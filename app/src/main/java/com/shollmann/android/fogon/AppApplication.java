@@ -10,19 +10,22 @@ import android.os.StrictMode;
 import android.view.inputmethod.InputMethodManager;
 
 import com.crashlytics.android.Crashlytics;
+import com.lookeate.java.api.model.APIResponse;
+import com.parse.Parse;
+import com.shollmann.android.fogon.helpers.PreferencesHelper;
+import com.shollmann.android.fogon.helpers.Utilities;
+import com.shollmann.android.fogon.util.Constants;
+import com.shollmann.android.fogon.util.IntentFactory;
 import com.shollmann.android.wood.CoreLibApplication;
 import com.shollmann.android.wood.arguments.ServiceArguments;
 import com.shollmann.android.wood.helpers.LogInternal;
 import com.shollmann.android.wood.network.NetworkUtilities;
 import com.shollmann.android.wood.services.DataService;
-import com.shollmann.android.fogon.helpers.PreferencesHelper;
-import com.shollmann.android.fogon.helpers.Utilities;
-import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.fogon.util.IntentFactory;
-import com.lookeate.java.api.model.APIResponse;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
+
+import io.fabric.sdk.android.Fabric;
 
 public class AppApplication extends android.app.Application {
     public static final int INITIALIZE_VERSION = 1;
@@ -92,7 +95,6 @@ public class AppApplication extends android.app.Application {
                                 //This situation would only happen if the app is killed by android during it's startup (highly unlikely)
                                 //    and the only reason for this code block is to register that unlikely event on Crashlytics
                                 LogInternal.logServiceBinding("error while waiting for dataService", "POSSIBLE FATAL ERROR");
-                                Crashlytics.logException(ex);
                             }
 
                             //I'm done waiting and I have to re-check once again if the service is available because maybe the waiting
@@ -104,7 +106,6 @@ public class AppApplication extends android.app.Application {
                                 //I can't run the workload because if it's not properly protected it can trigger a NullPointerException.
                                 //    and crash the app. I choose not to run it and risk putting the app in a strange state.
                                 LogInternal.logServiceBinding("timeout while waiting for dataService", "POSSIBLE FATAL ERROR");
-                                Crashlytics.logException(new Exception("Timeout waiting for DataService to be ready"));
                             }
                         }
                     }
@@ -196,6 +197,9 @@ public class AppApplication extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        if (!LogInternal.isDebugging()) {
+            Fabric.with(this, new Crashlytics());
+        }
         instance = this;
 
         LogInternal.logServiceBinding("starting-up dataService", "from Application.onCreate");
@@ -205,7 +209,7 @@ public class AppApplication extends android.app.Application {
         Utilities.setIsNewVersion();
 
         if (!LogInternal.isDebugging()) {
-            Crashlytics.start(this);
+
         }
 
         CoreLibApplication.getInstance().initialize(this, getUrl(), Utilities.getVersion(), Constants.PLATFORM,
@@ -223,6 +227,13 @@ public class AppApplication extends android.app.Application {
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
         }
 
+        startParse();
+
+    }
+
+    private void startParse() {
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "nl7pJ17IaIt2uiPmRyeSLvgVAFyOQvzwRZepRPMa", "Dw7IGglTweWafyTfRUQRbI9NqtOEWlz7bd5sauV0");
     }
 
     private boolean useMock() {

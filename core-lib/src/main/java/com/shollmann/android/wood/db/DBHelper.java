@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
 import com.shollmann.android.wood.Constants;
@@ -124,8 +123,6 @@ public abstract class DBHelper {
                     response.setExpired(true);
                 }
             } catch (JsonSyntaxException e) {
-                Crashlytics.logException(e);
-                Crashlytics.log(json);
                 LogInternal.error("Unable to parse Json: " + json);
             }
         }

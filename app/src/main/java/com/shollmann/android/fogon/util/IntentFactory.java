@@ -3,8 +3,9 @@ package com.shollmann.android.fogon.util;
 import android.content.Intent;
 
 import com.shollmann.android.fogon.AppApplication;
-import com.shollmann.android.wood.services.DataService;
+import com.shollmann.android.fogon.ui.activities.HomeActivity;
 import com.shollmann.android.fogon.ui.activities.ServiceActivity;
+import com.shollmann.android.wood.services.DataService;
 
 public class IntentFactory {
 
@@ -20,5 +21,9 @@ public class IntentFactory {
 
     public static Intent getDataServiceIntent() {
         return new Intent(AppApplication.getApplication(), DataService.class);
+    }
+
+    public static Intent getHomeActivity() {
+        return new Intent(AppApplication.getApplication(), HomeActivity.class);
     }
 }

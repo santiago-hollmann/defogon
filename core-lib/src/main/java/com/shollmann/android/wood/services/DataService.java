@@ -10,7 +10,6 @@ import android.os.Build;
 import android.os.IBinder;
 import android.support.v4.content.LocalBroadcastManager;
 
-import com.crashlytics.android.Crashlytics;
 import com.shollmann.android.wood.Constants;
 import com.shollmann.android.wood.CoreLibApplication;
 import com.shollmann.android.wood.arguments.ServiceArguments;
@@ -250,8 +249,6 @@ public class DataService extends Service {
             shoulWaitForRetry = !dataResponse.isSuccess() && !NetworkUtilities.isBackendError(dataResponse);
         } catch (NullPointerException e) {
             try {
-                Crashlytics.log(args.getLogMessage());
-                Crashlytics.logException(e);
             } catch (Exception ex) {
             }
         }

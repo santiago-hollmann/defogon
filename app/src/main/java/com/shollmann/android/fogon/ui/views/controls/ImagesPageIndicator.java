@@ -73,7 +73,7 @@ public class ImagesPageIndicator extends View implements PageIndicator {
         mPaintStroke.setStrokeWidth(1);
         mPaintFill = new Paint(Paint.ANTI_ALIAS_FLAG);
         mPaintFill.setStyle(Style.FILL);
-        mPaintFill.setColor(res.getColor(R.color.blue));
+        mPaintFill.setColor(res.getColor(R.color.primary));
         mRadius = a.getDimension(R.styleable.CirclePageIndicator_radius, defaultRadius);
         mSnap = a.getBoolean(R.styleable.CirclePageIndicator_snap, defaultSnap);
 

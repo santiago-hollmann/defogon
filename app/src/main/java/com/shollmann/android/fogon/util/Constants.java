@@ -14,6 +14,11 @@ public class Constants extends com.shollmann.android.wood.Constants {
         public static final String DATA_1 = "data1";
         public static final String DATA_2 = "data2";
         public final static String SCHEME = "";
-        public final static String FULL_SCHEME = SCHEME + "://data/";    }
+        public final static String FULL_SCHEME = SCHEME + "://data/";
+    }
 
+    public static class Model {
+        public static final String SONGS = "Songs";
+
+    }
 }

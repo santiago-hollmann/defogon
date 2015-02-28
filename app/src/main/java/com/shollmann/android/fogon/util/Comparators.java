@@ -1,16 +1,19 @@
 package com.shollmann.android.fogon.util;
 
+import com.shollmann.android.fogon.model.Song;
+
 import java.util.Comparator;
 
 public class Comparators {
 
-    // This is just a sample
-    public static Comparator<?> comparatorItem = new Comparator<Class>() {
+    public static Comparator<Song> comparatorSongs = new Comparator<Song>() {
         @Override
-        public int compare(Class arg0, Class arg1) {
-            // Make some comparation between class' attributes
-            // and return 1, 0 or -1 acorrding to it.
-            return 0;
+        public int compare(Song song0, Song song1) {
+            if (song0 != null && song1 != null) {
+                return song0.getName().compareToIgnoreCase(song1.getName());
+            } else {
+                return 0;
+            }
         }
     };
 

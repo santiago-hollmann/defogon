@@ -18,6 +18,5 @@ task wrapper(type: Wrapper) {
 allprojects {
     repositories {
         mavenCentral()
-        maven { url 'http://download.crashlytics.com/maven' }
     }
 }

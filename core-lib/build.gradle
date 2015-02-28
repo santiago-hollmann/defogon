@@ -36,7 +36,4 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.+'
     compile 'com.squareup.okio:okio:1.0.+'
     compile 'com.parse.bolts:bolts-android:1.1.+' //required by facebook library
-
-    //Libraries on the CRASHLYTICS-MAVEN repository
-    compile 'com.crashlytics.android:crashlytics:1.+'
 }

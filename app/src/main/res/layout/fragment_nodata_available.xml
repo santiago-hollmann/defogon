@@ -23,7 +23,7 @@
             android:paddingLeft="@dimen/big_distance"
             android:paddingRight="@dimen/big_distance"
             android:text="@string/check_your_internet_connection"
-            android:textColor="@color/blue"
+            android:textColor="@color/primary"
             android:textSize="@dimen/medium_text" />
     </ScrollView>
 
