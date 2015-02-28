@@ -18,7 +18,7 @@ public class Constants extends com.shollmann.android.wood.Constants {
     }
 
     public static class Model {
-        public static final String SONGS = "Songs";
+        public static final String SONGS = "Song";
 
     }
 }
