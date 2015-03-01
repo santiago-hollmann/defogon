@@ -21,4 +21,8 @@ public class Constants extends com.shollmann.android.wood.Constants {
         public static final String SONGS = "Song";
 
     }
+
+    public class Parse {
+        public static final int CACHE_TIME = 7;
+    }
 }

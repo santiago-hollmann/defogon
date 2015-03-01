@@ -232,7 +232,6 @@ public class AppApplication extends android.app.Application {
     }
 
     private void startParse() {
-        Parse.enableLocalDatastore(this);
         Parse.initialize(this, "nl7pJ17IaIt2uiPmRyeSLvgVAFyOQvzwRZepRPMa", "Dw7IGglTweWafyTfRUQRbI9NqtOEWlz7bd5sauV0");
     }
 
