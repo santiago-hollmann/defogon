@@ -24,6 +24,7 @@ import com.shollmann.android.wood.helpers.LogInternal;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends BaseFragment implements TextWatcher {
     private ListView listviewSongs;
@@ -63,6 +64,8 @@ public class HomeFragment extends BaseFragment implements TextWatcher {
 
     private void getSongs() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(Constants.Model.SONGS);
+        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
+        query.setMaxCacheAge(TimeUnit.DAYS.toMillis(7));
         query.orderByAscending("author");
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
