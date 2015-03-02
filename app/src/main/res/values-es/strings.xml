@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="app_name">Fogon</string>
     <string name="date_today">Hoy</string>
     <string name="date_yesterday">Ayer</string>
     <string name="date_days_ago">Hace %1$s días</string>

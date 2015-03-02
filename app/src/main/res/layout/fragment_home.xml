@@ -18,7 +18,8 @@
         android:id="@+id/home_songs_listview"
         android:divider="@color/light_gray"
         android:dividerHeight="0.5dp"
+        android:drawSelectorOnTop="true"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></ListView>
+        android:layout_height="match_parent" />
 
 </LinearLayout>

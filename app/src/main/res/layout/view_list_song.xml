@@ -19,7 +19,7 @@
         android:padding="@dimen/small_padding"
         android:id="@+id/song_item_chords"
         android:layout_width="match_parent"
-        android:textSize="@dimen/big_text"
+        android:textSize="@dimen/extra_big_text"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
