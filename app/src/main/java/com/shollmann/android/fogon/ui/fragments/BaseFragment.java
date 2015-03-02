@@ -131,10 +131,9 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
             bar.setDisplayShowCustomEnabled(false);
             bar.setTitle(null);
             bar.setSubtitle(null);
-            bar.setIcon(R.drawable.ic_launcher);
-            bar.setDisplayHomeAsUpEnabled(true);
-            bar.setDisplayShowHomeEnabled(true);
-            bar.setHomeButtonEnabled(true);
+            bar.setDisplayHomeAsUpEnabled(false);
+            bar.setDisplayShowHomeEnabled(false);
+            bar.setHomeButtonEnabled(false);
             bar.setDisplayShowTitleEnabled(true);
             bar.show();
         }
