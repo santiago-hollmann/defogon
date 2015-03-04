@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
+import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.ui.activities.FavoriteSongsActivity;
 import com.shollmann.android.fogon.ui.activities.HomeActivity;
 import com.shollmann.android.fogon.ui.activities.ServiceActivity;
@@ -91,11 +92,13 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
                 }
                 break;
             case R.id.drawer_send_song:
+                TrackerHelper.trackSubmitNewSong();
                 activity.startActivity(Intent.createChooser(IntentFactory
                                 .getSendEmailActivity(ResourcesHelper.getString(R.string.send_new_song_subject)),
                         ResourcesHelper.getString(R.string.send_email)));
                 break;
             case R.id.drawer_report_song:
+                TrackerHelper.trackReportSong();
                 activity.startActivity(Intent.createChooser(IntentFactory
                                 .getSendEmailActivity(ResourcesHelper.getString(R.string.report_song_subject)),
                         ResourcesHelper.getString(R.string.send_email)));

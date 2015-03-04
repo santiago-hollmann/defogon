@@ -42,6 +42,7 @@ import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.helpers.BundleHelper;
 import com.shollmann.android.fogon.helpers.DialogHelper;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
+import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.interfaces.DialogClickListener;
 import com.shollmann.android.fogon.interfaces.IServiceActivity;
 import com.shollmann.android.fogon.ui.views.NavigationDrawerView;
@@ -370,6 +371,12 @@ public abstract class ServiceActivity extends ActionBarActivity
 
     @Override
     public void onDisconnected() {
+    }
+
+    @Override
+    protected void onDestroy() {
+        TrackerHelper.flushEvents();
+        super.onDestroy();
     }
 
     protected void onInternalResultReceived(Intent intent) {

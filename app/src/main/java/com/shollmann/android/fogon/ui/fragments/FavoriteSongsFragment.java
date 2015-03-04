@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -14,13 +15,14 @@ import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.adapters.SongsFilteredAdapter;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
+import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.model.Song;
 import com.shollmann.android.fogon.util.Comparators;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
-public class FavoriteSongsFragment extends BaseFragment implements TextWatcher {
+public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, View.OnTouchListener {
     private ListView listviewSongs;
     private EditText edtSearch;
     private ArrayList<Song> arraySongs = new ArrayList<>();
@@ -48,12 +50,15 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher {
 
         edtSearch = (EditText) view.findViewById(R.id.home_songs_search);
         edtSearch.addTextChangedListener(this);
+        edtSearch.setOnTouchListener(this);
 
         listviewSongs = (ListView) view.findViewById(R.id.home_songs_listview);
         adapter = new SongsFilteredAdapter(getActivity(), arraySongs);
         listviewSongs.setAdapter(adapter);
 
         getSongs();
+
+        TrackerHelper.trackScreenName(FavoriteSongsFragment.this.getClass().getSimpleName());
     }
 
     private void getSongs() {
@@ -98,5 +103,11 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher {
     private void sort() {
         Collections.sort(arraySongs, Comparators.comparatorSongs);
         adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public boolean onTouch(View v, MotionEvent event) {
+        TrackerHelper.trackSearchTouched();
+        return false;
     }
 }
