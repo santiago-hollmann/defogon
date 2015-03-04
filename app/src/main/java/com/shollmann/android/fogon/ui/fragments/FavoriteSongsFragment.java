@@ -10,24 +10,17 @@ import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
 
-import com.parse.FindCallback;
-import com.parse.ParseObject;
-import com.parse.ParseQuery;
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.adapters.SongsFilteredAdapter;
+import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
 import com.shollmann.android.fogon.model.Song;
 import com.shollmann.android.fogon.util.Comparators;
-import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.wood.helpers.LogInternal;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
-import java.util.concurrent.TimeUnit;
 
-public class HomeFragment extends BaseFragment implements TextWatcher {
-    public static final String ORDER_CRITERIA = "author";
+public class FavoriteSongsFragment extends BaseFragment implements TextWatcher {
     private ListView listviewSongs;
     private EditText edtSearch;
     private ArrayList<Song> arraySongs = new ArrayList<>();
@@ -35,20 +28,23 @@ public class HomeFragment extends BaseFragment implements TextWatcher {
     private SongsFilteredAdapter adapter;
     private String keyword;
 
+    public FavoriteSongsFragment() {
+    }
+
     @Override
     public View onCreateCustomView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         return view;
     }
 
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
+    public static FavoriteSongsFragment newInstance() {
+        return new FavoriteSongsFragment();
     }
 
     @Override
     public void initialize() {
         super.initialize();
-        getSupportActionBar().setTitle(ResourcesHelper.getString(R.string.app_name));
+        getSupportActionBar().setTitle(ResourcesHelper.getString(R.string.favorite_songs));
 
         edtSearch = (EditText) view.findViewById(R.id.home_songs_search);
         edtSearch.addTextChangedListener(this);
@@ -61,28 +57,9 @@ public class HomeFragment extends BaseFragment implements TextWatcher {
     }
 
     private void getSongs() {
-        ParseQuery<ParseObject> query = ParseQuery.getQuery(Constants.Model.SONGS);
-        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
-        query.setMaxCacheAge(TimeUnit.DAYS.toMillis(Constants.Parse.CACHE_TIME));
-        query.orderByAscending(ORDER_CRITERIA);
-        query.findInBackground(new FindCallback<ParseObject>() {
-            @Override
-            public void done(List<ParseObject> parseObjects, com.parse.ParseException e) {
-                if (e == null) {
-                    populateSongsList(parseObjects);
-                } else {
-                    LogInternal.error("Songs Error: " + e.getMessage());
-                }
-            }
-        });
-    }
-
-    private void populateSongsList(List<ParseObject> list) {
         arraySongs.clear();
-        for (ParseObject object : list) {
-            arraySongs.add(new Song(object));
-        }
-        adapter.notifyDataSetChanged();
+        arraySongs.addAll(PreferencesHelper.getFavoriteSongs().values());
+        sort();
     }
 
 
@@ -113,7 +90,6 @@ public class HomeFragment extends BaseFragment implements TextWatcher {
                 @Override
                 public void onFilterComplete(int count) {
                     sort();
-                    adapter.notifyDataSetChanged();
                 }
             });
         }

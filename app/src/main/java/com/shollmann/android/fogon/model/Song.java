@@ -1,12 +1,16 @@
 package com.shollmann.android.fogon.model;
 
 import com.parse.ParseObject;
+import com.shollmann.android.fogon.helpers.PreferencesHelper;
 
-public class Song {
+import java.io.Serializable;
+
+public class Song implements Serializable {
     private String objectId;
     private String name;
     private String author;
     private String chords;
+    private boolean isFavorite;
 
     public Song(String name, String author, String chords) {
         this.name = name;
@@ -15,10 +19,15 @@ public class Song {
     }
 
     public Song(ParseObject object) {
-        objectId = object.getString("objectId");
+        objectId = object.getObjectId();
         name = object.getString("name");
         author = object.getString("author");
         chords = object.getString("chords");
+        isFavorite = isAnonFavorite();
+    }
+
+    private boolean isAnonFavorite() {
+        return PreferencesHelper.getFavoriteSongs() != null && PreferencesHelper.getFavoriteSongs().containsKey(objectId);
     }
 
     public String getChords() {
@@ -52,5 +61,13 @@ public class Song {
     @Override
     public String toString() {
         return name + " " + author;
+    }
+
+    public boolean isFavorite() {
+        return isFavorite;
+    }
+
+    public void setFavorite(boolean isFavorite) {
+        this.isFavorite = isFavorite;
     }
 }

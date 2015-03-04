@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/light_gray"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -17,146 +16,67 @@
             android:padding="@dimen/extra_big_padding"
             android:layout_height="match_parent">
 
-            <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textColor="@color/black"
+                android:textStyle="bold"
+                android:textColor="@color/primary"
                 android:padding="@dimen/medium_padding"
-                app:fontType="Light"
                 android:textSize="@dimen/drawer_title" />
 
             <View
                 android:layout_width="match_parent"
                 android:layout_marginBottom="@dimen/medium_padding"
                 android:layout_height="0.75dp"
-                android:background="@color/dark_gray" />
+                android:background="@color/secondary" />
 
-            <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
+            <TextView
                 android:id="@+id/drawer_home"
-                android:background="@drawable/drawer_selector"
-                android:clickable="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                android:textColor="@color/black"
-                android:padding="@dimen/big_padding"
-                app:fontType="Light"
-                android:textSize="@dimen/drawer_text" />
-
-            <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
-                android:id="@+id/drawer_inspire"
                 android:layout_width="match_parent"
                 android:background="@drawable/drawer_selector"
                 android:clickable="true"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name"
+                android:text="@string/home"
                 android:textColor="@color/black"
                 android:padding="@dimen/big_padding"
-                app:fontType="Light"
                 android:textSize="@dimen/drawer_text" />
 
-            <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
-                android:id="@+id/drawer_login"
-                android:visibility="gone"
+            <TextView
+                android:id="@+id/drawer_favorite_songs"
                 android:layout_width="match_parent"
                 android:background="@drawable/drawer_selector"
                 android:clickable="true"
                 android:layout_height="wrap_content"
-                android:text="@string/app_name"
+                android:text="@string/favorite_songs"
                 android:textColor="@color/black"
                 android:padding="@dimen/big_padding"
-                app:fontType="Light"
                 android:textSize="@dimen/drawer_text" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/drawer_send_song"
                 android:layout_width="match_parent"
-                android:orientation="vertical"
-                android:visibility="visible"
-                android:layout_height="wrap_content">
+                android:background="@drawable/drawer_selector"
+                android:clickable="true"
+                android:layout_height="wrap_content"
+                android:text="@string/send_song"
+                android:textColor="@color/black"
+                android:padding="@dimen/big_padding"
+                android:textSize="@dimen/drawer_text" />
 
-                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
-                    android:layout_marginTop="@dimen/big_distance"
-                    android:layout_width="match_parent"
-                    android:id="@+id/drawer_username"
-                    android:layout_height="wrap_content"
-                    android:text="John Doe"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/big_padding"
-                    app:fontType="Light"
-                    android:textSize="@dimen/drawer_title" />
+            <TextView
+                android:id="@+id/drawer_report_song"
+                android:layout_width="match_parent"
+                android:background="@drawable/drawer_selector"
+                android:clickable="true"
+                android:layout_height="wrap_content"
+                android:text="@string/report_song"
+                android:textColor="@color/black"
+                android:padding="@dimen/big_padding"
+                android:textSize="@dimen/drawer_text" />
 
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_marginBottom="@dimen/medium_padding"
-                    android:layout_height="0.75dp"
-                    android:background="@color/dark_gray" />
-
-                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
-                    android:id="@+id/drawer_my_reservations"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/drawer_selector"
-                    android:clickable="true"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/big_padding"
-                    app:fontType="Light"
-                    android:textSize="@dimen/drawer_text" />
-
-                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
-                    android:id="@+id/drawer_my_favorite_styles"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/drawer_selector"
-                    android:clickable="true"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/big_padding"
-                    app:fontType="Light"
-                    android:textSize="@dimen/drawer_text" />
-
-                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
-                    android:id="@+id/drawer_my_favorite_professionals"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/big_padding"
-                    app:fontType="Light"
-                    android:textSize="@dimen/drawer_text" />
-
-                <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
-                    android:id="@+id/drawer_my_favorite_logout"
-                    android:layout_width="match_parent"
-                    android:background="@drawable/drawer_selector"
-                    android:clickable="true"
-                    android:layout_height="wrap_content"
-                    android:text="@string/app_name"
-                    android:textColor="@color/black"
-                    android:padding="@dimen/big_padding"
-                    app:fontType="Light"
-                    android:textSize="@dimen/drawer_text" />
-            </LinearLayout>
         </LinearLayout>
     </ScrollView>
-
-
-    <com.shollmann.android.fogon.ui.views.controls.HelveticaTextView
-        android:layout_marginTop="@dimen/big_distance"
-        android:id="@+id/drawer_offer_services"
-        android:layout_width="match_parent"
-        app:fontType="Light"
-        android:padding="@dimen/medium_padding"
-        android:text="@string/app_name"
-        android:gravity="center"
-        android:textSize="@dimen/big_text"
-        android:textColor="@color/white"
-        android:layout_alignParentBottom="true"
-        android:layout_height="@dimen/finger_size"
-        android:clickable="true"
-        android:background="@drawable/orange_selector" />
 
 
 </RelativeLayout>

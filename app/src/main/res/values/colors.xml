@@ -8,13 +8,12 @@
     <color name="translucent_subtle_black">#20000000</color>
     <color name="translucent_blue">#602973D2</color>
     <color name="orange">#FFFF7900</color>
-    <color name="light_orange">#ffffa931</color>
     <color name="dark_gray">#FF494949</color>
     <color name="very_light_blue">#ff6ab3ff</color>
     <color name="secondary">#D32F2F</color>
     <color name="primary">#F44336</color>
     <color name="accent">#ff5722</color>
-    <color name="translucent_selector">#15F44336</color>
+    <color name="translucent_selector">#22F44336</color>
 
 
     <!-- FORMS -->

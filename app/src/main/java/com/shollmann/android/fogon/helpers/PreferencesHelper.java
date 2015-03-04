@@ -4,9 +4,14 @@ import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.shollmann.android.fogon.AppApplication;
 import com.shollmann.android.fogon.R;
+import com.shollmann.android.fogon.model.Song;
 import com.shollmann.android.fogon.util.Constants;
+
+import java.lang.reflect.Type;
+import java.util.HashMap;
 
 public class PreferencesHelper {
     private final static String API_ENDPOINT = "apiEndpoint";
@@ -17,12 +22,14 @@ public class PreferencesHelper {
     private static final String USE_AUTOLOCATION = "useAutolocation";
     private static final String IS_NEW_VERSION = "isNewVersion";
     private static final String GOOGLE_PLAY_SERVICES_SHOWN = "googlePlayServicesShown";
+    private static final String FAVORITE_SONGS = "favoriteSongs";
 
     private final static Gson gson = new Gson();
 
     static {
         prefs = PreferenceManager.getDefaultSharedPreferences(AppApplication.getApplication());
     }
+
 
     private static SharedPreferences prefs;
 
@@ -138,4 +145,19 @@ public class PreferencesHelper {
         return get(IS_NEW_VERSION, false);
     }
 
+    public static HashMap<String, Song> getFavoriteSongs() {
+        String json = get(FAVORITE_SONGS, null);
+        if (json != null) {
+            Type mapType = new TypeToken<HashMap<String, Song>>() {
+            }.getType();
+            return gson.fromJson(json, mapType);
+        }
+        return null;
+    }
+
+    public static void setFavoriteSongs(HashMap<String, Song> favoriteSongs) {
+        Type mapType = new TypeToken<HashMap<String, Song>>() {
+        }.getType();
+        set(FAVORITE_SONGS, gson.toJson(favoriteSongs, mapType));
+    }
 }

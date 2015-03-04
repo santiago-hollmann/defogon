@@ -28,9 +28,8 @@
 
         </LinearLayout>
 
-        <fragment
-            android:id="@+id/fragment_drawer"
-            android:name="com.shollmann.android.fogon.ui.fragments.DrawerFragment"
+        <com.shollmann.android.fogon.ui.views.NavigationDrawerView
+            android:id="@+id/navigation_drawer"
             android:layout_width="@dimen/drawer_width"
             android:layout_height="match_parent"
             android:layout_gravity="left|start" />

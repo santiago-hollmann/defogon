@@ -21,5 +21,9 @@
     <string name="drawer_close">Close Drawer</string>
     <string name="word_word">%1$s - %2$s</string>
     <string name="look_for_song">Search for a song</string>
+    <string name="favorite_songs">Favorite Songs</string>
+    <string name="send_song">Submit a song</string>
+    <string name="report_song">Report a song</string>
+    <string name="home">All songs</string>
 
 </resources>

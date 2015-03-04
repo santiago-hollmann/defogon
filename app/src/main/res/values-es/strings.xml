@@ -19,5 +19,9 @@
     <string name="drawer_close">Cerrar Drawer</string>
     <string name="word_word">%1$s - %2$s</string>
     <string name="look_for_song">Buscá una canción</string>
+    <string name="favorite_songs">Canciones favoritas</string>
+    <string name="send_song">Enviá una canción</string>
+    <string name="report_song">¿Una canción no es correcta?</string>
+    <string name="home">Cancionero</string>
 
 </resources>
