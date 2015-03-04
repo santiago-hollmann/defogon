@@ -80,8 +80,6 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
         }
 
         if (!response.isSuccess() && hasToShowNoDataFragment(response)) {
-            // TODO: Change this, as it is directly setting the connection
-            // status
             NetworkUtilities.setOnline(false);
             goToFragmentRemovingCurrent(NoDataAvailableFragment.newInstance());
 

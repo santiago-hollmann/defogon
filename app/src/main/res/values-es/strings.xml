@@ -21,7 +21,10 @@
     <string name="look_for_song">Buscá una canción</string>
     <string name="favorite_songs">Canciones favoritas</string>
     <string name="send_song">Enviá una canción</string>
-    <string name="report_song">¿Una canción no es correcta?</string>
+    <string name="report_song">¿Una canción está mal?</string>
     <string name="home">Cancionero</string>
+    <string name="send_email">Send e-mail</string>
+    <string name="send_new_song_subject">Quisiera agregar una canción</string>
+    <string name="report_song_subject">Hay una canción que está mal</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.shollmann.android.fogon.ui.views;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -88,6 +89,16 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
                 if (!(activity instanceof FavoriteSongsActivity)) {
                     activity.startActivity(IntentFactory.getFavoriteSongsActivity());
                 }
+                break;
+            case R.id.drawer_send_song:
+                activity.startActivity(Intent.createChooser(IntentFactory
+                                .getSendEmailActivity(ResourcesHelper.getString(R.string.send_new_song_subject)),
+                        ResourcesHelper.getString(R.string.send_email)));
+                break;
+            case R.id.drawer_report_song:
+                activity.startActivity(Intent.createChooser(IntentFactory
+                                .getSendEmailActivity(ResourcesHelper.getString(R.string.report_song_subject)),
+                        ResourcesHelper.getString(R.string.send_email)));
                 break;
         }
     }

@@ -23,4 +23,12 @@ public class IntentFactory {
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         return intent;
     }
+
+    public static Intent getSendEmailActivity(String subject) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("text/html");
+        intent.putExtra(Intent.EXTRA_EMAIL, new String[]{Constants.CONTACT_EMAIL});
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        return intent;
+    }
 }
