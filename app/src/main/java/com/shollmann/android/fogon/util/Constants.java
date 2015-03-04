@@ -6,6 +6,7 @@ public class Constants extends com.shollmann.android.wood.Constants {
     public static final String PLATFORM = "android";
     public static final String MAPS_PROD_KEY = "";
     public static final String PHONE_INFO = "phoneInfo";
+    public static final String CONTACT_EMAIL = "defogonandroid@gmail.com";
 
     public static class ExtraKeys extends com.shollmann.android.wood.Constants {
         public static final String SEARCH_STRING = "searchString";
