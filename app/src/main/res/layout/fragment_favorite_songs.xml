@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/favorite_songs_search"
+        android:layout_width="match_parent"
+        android:hint="@string/look_for_song"
+        android:singleLine="true"
+        android:maxLength="40"
+        android:layout_margin="@dimen/medium_padding"
+        android:padding="@dimen/medium_padding"
+        android:visibility="gone"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/favorite_songs_no_favs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/no_favorite_songs"
+        android:textStyle="bold"
+        android:padding="@dimen/big_padding"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@color/accent"
+        android:textSize="@dimen/extra_big_text" />
+
+    <ListView
+        android:id="@+id/favorite_songs_listview"
+        android:divider="@color/light_gray"
+        android:dividerHeight="0.5dp"
+        android:listSelector="@color/translucent_selector"
+        android:drawSelectorOnTop="true"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
