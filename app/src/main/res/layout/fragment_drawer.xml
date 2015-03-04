@@ -1,82 +1,75 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@color/white"
+    android:scrollbars="none"
     android:layout_width="match_parent"
+    android:paddingBottom="@dimen/medium_padding"
     android:layout_height="match_parent">
 
-    <ScrollView
-        android:scrollbars="none"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:paddingBottom="@dimen/big_finger_size"
+        android:padding="@dimen/extra_big_padding"
         android:layout_height="match_parent">
 
-        <LinearLayout
-            android:orientation="vertical"
+        <TextView
             android:layout_width="match_parent"
-            android:padding="@dimen/extra_big_padding"
-            android:layout_height="match_parent">
+            android:layout_height="wrap_content"
+            android:text="@string/app_name"
+            android:textStyle="bold"
+            android:textColor="@color/primary"
+            android:padding="@dimen/medium_padding"
+            android:textSize="@dimen/drawer_title" />
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/app_name"
-                android:textStyle="bold"
-                android:textColor="@color/primary"
-                android:padding="@dimen/medium_padding"
-                android:textSize="@dimen/drawer_title" />
+        <View
+            android:layout_width="match_parent"
+            android:layout_marginBottom="@dimen/medium_padding"
+            android:layout_height="0.75dp"
+            android:background="@color/secondary" />
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_marginBottom="@dimen/medium_padding"
-                android:layout_height="0.75dp"
-                android:background="@color/secondary" />
+        <TextView
+            android:id="@+id/drawer_home"
+            android:layout_width="match_parent"
+            android:background="@drawable/drawer_selector"
+            android:clickable="true"
+            android:layout_height="wrap_content"
+            android:text="@string/home"
+            android:textColor="@color/black"
+            android:padding="@dimen/big_padding"
+            android:textSize="@dimen/drawer_text" />
 
-            <TextView
-                android:id="@+id/drawer_home"
-                android:layout_width="match_parent"
-                android:background="@drawable/drawer_selector"
-                android:clickable="true"
-                android:layout_height="wrap_content"
-                android:text="@string/home"
-                android:textColor="@color/black"
-                android:padding="@dimen/big_padding"
-                android:textSize="@dimen/drawer_text" />
+        <TextView
+            android:id="@+id/drawer_favorite_songs"
+            android:layout_width="match_parent"
+            android:background="@drawable/drawer_selector"
+            android:clickable="true"
+            android:layout_height="wrap_content"
+            android:text="@string/favorite_songs"
+            android:textColor="@color/black"
+            android:padding="@dimen/big_padding"
+            android:textSize="@dimen/drawer_text" />
 
-            <TextView
-                android:id="@+id/drawer_favorite_songs"
-                android:layout_width="match_parent"
-                android:background="@drawable/drawer_selector"
-                android:clickable="true"
-                android:layout_height="wrap_content"
-                android:text="@string/favorite_songs"
-                android:textColor="@color/black"
-                android:padding="@dimen/big_padding"
-                android:textSize="@dimen/drawer_text" />
+        <TextView
+            android:id="@+id/drawer_send_song"
+            android:layout_width="match_parent"
+            android:background="@drawable/drawer_selector"
+            android:clickable="true"
+            android:layout_height="wrap_content"
+            android:text="@string/send_song"
+            android:textColor="@color/black"
+            android:padding="@dimen/big_padding"
+            android:textSize="@dimen/drawer_text" />
 
-            <TextView
-                android:id="@+id/drawer_send_song"
-                android:layout_width="match_parent"
-                android:background="@drawable/drawer_selector"
-                android:clickable="true"
-                android:layout_height="wrap_content"
-                android:text="@string/send_song"
-                android:textColor="@color/black"
-                android:padding="@dimen/big_padding"
-                android:textSize="@dimen/drawer_text" />
+        <TextView
+            android:id="@+id/drawer_report_song"
+            android:layout_width="match_parent"
+            android:background="@drawable/drawer_selector"
+            android:clickable="true"
+            android:layout_height="wrap_content"
+            android:text="@string/report_song"
+            android:textColor="@color/black"
+            android:padding="@dimen/big_padding"
+            android:textSize="@dimen/drawer_text" />
 
-            <TextView
-                android:id="@+id/drawer_report_song"
-                android:layout_width="match_parent"
-                android:background="@drawable/drawer_selector"
-                android:clickable="true"
-                android:layout_height="wrap_content"
-                android:text="@string/report_song"
-                android:textColor="@color/black"
-                android:padding="@dimen/big_padding"
-                android:textSize="@dimen/drawer_text" />
-
-        </LinearLayout>
-    </ScrollView>
-
-
-</RelativeLayout>
+    </LinearLayout>
+</ScrollView>
