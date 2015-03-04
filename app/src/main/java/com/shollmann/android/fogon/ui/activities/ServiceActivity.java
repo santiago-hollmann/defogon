@@ -44,6 +44,7 @@ import com.shollmann.android.fogon.helpers.DialogHelper;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.interfaces.DialogClickListener;
 import com.shollmann.android.fogon.interfaces.IServiceActivity;
+import com.shollmann.android.fogon.ui.views.NavigationDrawerView;
 import com.shollmann.android.fogon.util.Constants;
 import com.shollmann.android.wood.arguments.ServiceArguments;
 import com.shollmann.android.wood.helpers.LogInternal;
@@ -87,6 +88,7 @@ public abstract class ServiceActivity extends ActionBarActivity
     public SwipeRefreshLayout swipeLayout;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawer;
+    private NavigationDrawerView navigationDrawerView;
 
     public ServiceActivity() {
         app = AppApplication.getApplication();
@@ -126,6 +128,8 @@ public abstract class ServiceActivity extends ActionBarActivity
         setupDrawerToggle();
         setUpLocationClient();
 
+        navigationDrawerView = (NavigationDrawerView) findViewById(R.id.navigation_drawer);
+
         swipeLayout = (SwipeRefreshLayout) findViewById(R.id.srl_container);
         swipeLayout.setOnRefreshListener(this);
         swipeLayout.setColorScheme(R.color.primary, R.color.accent, R.color.secondary);
@@ -159,11 +163,11 @@ public abstract class ServiceActivity extends ActionBarActivity
     }
 
     public void closeDrawer() {
-        drawer.closeDrawer(R.layout.fragment_drawer);
+        drawer.closeDrawers();
     }
 
     public void openDrawer() {
-        drawer.openDrawer(R.layout.fragment_drawer);
+        drawer.openDrawer(R.id.navigation_drawer);
     }
 
     private void onCloseDrawer() {
@@ -348,14 +352,14 @@ public abstract class ServiceActivity extends ActionBarActivity
                 e.printStackTrace();
             }
         } else {
-            if (PreferencesHelper.showGooglePlayService()) {
+            /*if (PreferencesHelper.showGooglePlayService()) {
                 PreferencesHelper.setShowGooglePlayService(false);
                 Dialog errorDialog =
                         GooglePlayServicesUtil.getErrorDialog(connectionResult.getErrorCode(), this, CONNECTION_FAILURE_RESOLUTION_REQUEST);
                 if (errorDialog != null) {
                     DialogHelper.show(this, errorDialog);
                 }
-            }
+            }*/
         }
     }
 
@@ -443,6 +447,7 @@ public abstract class ServiceActivity extends ActionBarActivity
         super.onResume();
         locationClient.connect();
         registerReceiver();
+        navigationDrawerView.update();
     }
 
     @Override
