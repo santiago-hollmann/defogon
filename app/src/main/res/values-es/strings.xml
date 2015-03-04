@@ -26,5 +26,6 @@
     <string name="send_email">Send e-mail</string>
     <string name="send_new_song_subject">Quisiera agregar una canción</string>
     <string name="report_song_subject">Hay una canción que está mal</string>
+    <string name="no_favorite_songs">Todavía no marcaste ninguna canción como favorita</string>
 
 </resources>

@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.adapters.SongsFilteredAdapter;
@@ -29,13 +30,14 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
     private View view;
     private SongsFilteredAdapter adapter;
     private String keyword;
+    private TextView txtNoFavorites;
 
     public FavoriteSongsFragment() {
     }
 
     @Override
     public View onCreateCustomView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, container, false);
+        view = inflater.inflate(R.layout.fragment_favorite_songs, container, false);
         return view;
     }
 
@@ -48,11 +50,13 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
         super.initialize();
         getSupportActionBar().setTitle(ResourcesHelper.getString(R.string.favorite_songs));
 
-        edtSearch = (EditText) view.findViewById(R.id.home_songs_search);
+        txtNoFavorites = (TextView) view.findViewById(R.id.favorite_songs_no_favs);
+
+        edtSearch = (EditText) view.findViewById(R.id.favorite_songs_search);
         edtSearch.addTextChangedListener(this);
         edtSearch.setOnTouchListener(this);
 
-        listviewSongs = (ListView) view.findViewById(R.id.home_songs_listview);
+        listviewSongs = (ListView) view.findViewById(R.id.favorite_songs_listview);
         adapter = new SongsFilteredAdapter(getActivity(), arraySongs);
         listviewSongs.setAdapter(adapter);
 
@@ -62,9 +66,23 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
     }
 
     private void getSongs() {
-        arraySongs.clear();
-        arraySongs.addAll(PreferencesHelper.getFavoriteSongs().values());
-        sort();
+        if (hasFavoriteSongs()) {
+            edtSearch.setVisibility(View.VISIBLE);
+            listviewSongs.setVisibility(View.VISIBLE);
+            txtNoFavorites.setVisibility(View.GONE);
+
+            arraySongs.clear();
+            arraySongs.addAll(PreferencesHelper.getFavoriteSongs().values());
+            sort();
+        } else {
+            edtSearch.setVisibility(View.GONE);
+            listviewSongs.setVisibility(View.GONE);
+            txtNoFavorites.setVisibility(View.VISIBLE);
+        }
+    }
+
+    private boolean hasFavoriteSongs() {
+        return PreferencesHelper.getFavoriteSongs() != null && PreferencesHelper.getFavoriteSongs().size() > 0;
     }
 
 
