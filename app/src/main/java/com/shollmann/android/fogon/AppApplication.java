@@ -13,6 +13,7 @@ import com.crashlytics.android.Crashlytics;
 import com.lookeate.java.api.model.APIResponse;
 import com.parse.Parse;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
+import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.helpers.Utilities;
 import com.shollmann.android.fogon.util.Constants;
 import com.shollmann.android.fogon.util.IntentFactory;
@@ -226,6 +227,8 @@ public class AppApplication extends android.app.Application {
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
             StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().detectAll().penaltyLog().build());
         }
+
+        TrackerHelper.initTrackers(this);
 
         startParse();
 
