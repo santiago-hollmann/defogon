@@ -12,6 +12,7 @@ public class TrackerHelper {
     private static final String REPORT_SONG = "report_song";
     private static final String REMOVED_FROM_FAVORITE_SONGS = "removed_from_favorite_songs";
     private static final String SEARCH_TOUCHED = "search_touched";
+    private static final String SCREEN_AWAKE = "screen_awake";
 
     public static void initTrackers(Context context) {
         MixPanelHelper.initMixPanel(context);
@@ -39,6 +40,10 @@ public class TrackerHelper {
 
     public static void trackReportSong() {
         MixPanelHelper.trackEvent(REPORT_SONG);
+    }
+
+    public static void trackScreenAwake(boolean isScreenAwake) {
+        MixPanelHelper.trackScreenAwakeEvent(SCREEN_AWAKE, isScreenAwake);
     }
 
 
