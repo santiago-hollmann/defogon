@@ -156,6 +156,7 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
 
             Toast.makeText(getActivity(), ResourcesHelper.getString(PreferencesHelper.isScreenAwake() ? R.string.screen_sleep : R.string.screen_awake), Toast.LENGTH_LONG).show();
             PreferencesHelper.setScreenAwake(!PreferencesHelper.isScreenAwake());
+            TrackerHelper.trackScreenAwake(PreferencesHelper.isScreenAwake());
         }
         return super.onOptionsItemSelected(item);
     }
