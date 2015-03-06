@@ -31,5 +31,7 @@
     <string name="no_favorite_songs">You haven\'t favorited any song yet.</string>
     <string name="screen_awake">The screen will keep awake</string>
     <string name="screen_sleep">The screen will turn off after not using the app</string>
+    <string name="screen_awake_menu">Screen awake</string>
+    <string name="screen_off_menu">Screen off</string>
 
 </resources>

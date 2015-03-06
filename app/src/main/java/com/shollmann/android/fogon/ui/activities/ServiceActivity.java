@@ -134,6 +134,12 @@ public abstract class ServiceActivity extends ActionBarActivity
         swipeLayout = (SwipeRefreshLayout) findViewById(R.id.srl_container);
         swipeLayout.setOnRefreshListener(this);
         swipeLayout.setColorScheme(R.color.primary, R.color.accent, R.color.secondary);
+
+        if (!PreferencesHelper.isScreenAwake()) {
+            getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        } else {
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        }
     }
 
     private void setupDrawerToggle() {

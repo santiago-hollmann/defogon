@@ -29,5 +29,8 @@
     <string name="no_favorite_songs">Todavía no marcaste ninguna canción como favorita.</string>
     <string name="screen_awake">La pantalla permanecerá encendida</string>
     <string name="screen_sleep">La pantalla se apagará cuando no usés la app</string>
+    <string name="screen_awake_menu">Pantalla encendida</string>
+    <string name="screen_off_menu">Pantalla apagada</string>
+
 
 </resources>
