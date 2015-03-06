@@ -6,7 +6,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 public class LogInternal {
-    private static boolean DEBUG = false;
+    private static boolean DEBUG = true;
     private static boolean LOG_PUSH_EVENTS = false;
     private static boolean LOG_SERVICE_CALLS = false;
     private static boolean LOG_UI_NAVIGATION = false;
