@@ -23,6 +23,7 @@ public class PreferencesHelper {
     private static final String IS_NEW_VERSION = "isNewVersion";
     private static final String GOOGLE_PLAY_SERVICES_SHOWN = "googlePlayServicesShown";
     private static final String FAVORITE_SONGS = "favoriteSongs";
+    private static final String IS_SCREEN_AWAKE = "isScreenAwake";
 
     private final static Gson gson = new Gson();
 
@@ -159,5 +160,13 @@ public class PreferencesHelper {
         Type mapType = new TypeToken<HashMap<String, Song>>() {
         }.getType();
         set(FAVORITE_SONGS, gson.toJson(favoriteSongs, mapType));
+    }
+
+    public static boolean isScreenAwake() {
+        return get(IS_SCREEN_AWAKE, true);
+    }
+
+    public static void setScreenAwake(boolean screenAwake) {
+        set(IS_SCREEN_AWAKE, screenAwake);
     }
 }
