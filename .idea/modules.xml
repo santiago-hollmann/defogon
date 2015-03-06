@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/api/api.iml" filepath="$PROJECT_DIR$/api/api.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/core-lib/wood.iml" filepath="$PROJECT_DIR$/core-lib/wood.iml" />
+      <module fileurl="file://$PROJECT_DIR$/core-lib/core-lib.iml" filepath="$PROJECT_DIR$/core-lib/core-lib.iml" />
       <module fileurl="file://$PROJECT_DIR$/fogon.iml" filepath="$PROJECT_DIR$/fogon.iml" />
     </modules>
   </component>

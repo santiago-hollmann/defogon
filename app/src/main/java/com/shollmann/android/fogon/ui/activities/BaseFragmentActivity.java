@@ -392,4 +392,9 @@ public abstract class BaseFragmentActivity extends BaseActivity
             fragment.onRefresh();
         }
     }
+
+    @Override
+    public void onClick(View v) {
+
+    }
 }
