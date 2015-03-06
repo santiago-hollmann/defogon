@@ -75,10 +75,8 @@ public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTo
     private void getSongs() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(Constants.Model.SONGS);
         if (!NetworkUtilities.isConnected()) {
-            LogInternal.error("always cache");
             query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ONLY);
         } else {
-            LogInternal.error("Cache then net and added cache time");
             query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
             query.setMaxCacheAge(TimeUnit.DAYS.toMillis(Constants.Parse.CACHE_DAYS_TIME));
         }
