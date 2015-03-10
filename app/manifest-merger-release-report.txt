@@ -1,4 +1,5 @@
 -- Merging decision tree log ---
+-- puto el que lee --
 manifest
 ADDED from AndroidManifest.xml:2:1
 	xmlns:tools
