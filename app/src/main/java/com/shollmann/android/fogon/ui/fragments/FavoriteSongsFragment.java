@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.adapters.SongsFilteredAdapter;
+import com.shollmann.android.fogon.helpers.BundleHelper;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
@@ -29,6 +30,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, View.OnTouchListener {
+    private static final String LIST_POSITION = "itemListPosition";
+    private static final String SONGS = "songs";
+
     private ListView listviewSongs;
     private EditText edtSearch;
     private ArrayList<Song> arraySongs = new ArrayList<>();
@@ -36,6 +40,7 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
     private SongsFilteredAdapter adapter;
     private String keyword;
     private TextView txtNoFavorites;
+    private int listScrollPosition;
 
     public FavoriteSongsFragment() {
     }
@@ -43,6 +48,12 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
     @Override
     public View onCreateCustomView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_favorite_songs, container, false);
+
+        if (savedInstanceState != null) {
+            arraySongs = BundleHelper.fromBundle(savedInstanceState, SONGS, new ArrayList<Song>());
+            listScrollPosition = BundleHelper.fromBundle(savedInstanceState, LIST_POSITION);
+        }
+
         return view;
     }
 
@@ -65,8 +76,14 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
         adapter = new SongsFilteredAdapter(getActivity(), arraySongs);
         listviewSongs.setAdapter(adapter);
 
-        getSongs();
-
+        if (arraySongs.isEmpty()) {
+            getSongs();
+        } else {
+            edtSearch.setVisibility(View.VISIBLE);
+            listviewSongs.setVisibility(View.VISIBLE);
+            txtNoFavorites.setVisibility(View.GONE);
+            listviewSongs.setSelection(listScrollPosition);
+        }
         TrackerHelper.trackScreenName(FavoriteSongsFragment.this.getClass().getSimpleName());
     }
 
@@ -159,5 +176,12 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
             TrackerHelper.trackScreenAwake(PreferencesHelper.isScreenAwake());
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(LIST_POSITION, listviewSongs.getFirstVisiblePosition());
+        outState.putSerializable(SONGS, arraySongs);
     }
 }
