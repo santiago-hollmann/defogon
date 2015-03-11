@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.shollmann.android.fogon"
     android:installLocation="auto"
-    android:versionCode="1000"
-    android:versionName="1.00.0">
+    android:versionCode="1010"
+    android:versionName="1.01.0">
 
     <uses-sdk
         android:minSdkVersion="10"
