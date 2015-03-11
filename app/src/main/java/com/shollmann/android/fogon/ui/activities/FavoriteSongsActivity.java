@@ -10,6 +10,9 @@ public class FavoriteSongsActivity extends BaseFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setInitialFragment(FavoriteSongsFragment.newInstance());
+
+        if (savedInstanceState == null) {
+            setInitialFragment(FavoriteSongsFragment.newInstance());
+        }
     }
 }

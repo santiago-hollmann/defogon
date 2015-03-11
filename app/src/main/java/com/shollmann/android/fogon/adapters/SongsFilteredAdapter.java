@@ -13,15 +13,12 @@ import com.shollmann.android.fogon.util.Constants;
 
 import java.text.Normalizer;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 
 public class SongsFilteredAdapter extends FastListAdapter<Song> implements Filterable {
 
     public static final String SPECIAL_CHARS_REGEX = "\\p{InCombiningDiacriticalMarks}+";
-    private final List<Song> songArrayList = Collections.synchronizedList(new ArrayList<Song>());
+    private final ArrayList<Song> songArrayList = new ArrayList<Song>();
 
     public SongsFilteredAdapter(Context context, ArrayList<Song> songArrayList) {
         super(context, songArrayList);
@@ -91,10 +88,7 @@ public class SongsFilteredAdapter extends FastListAdapter<Song> implements Filte
             String normalizedKeyword = Normalizer.normalize(keyword, Normalizer.Form.NFD);
             String keywordWithoutAccents = normalizedKeyword.replaceAll(SPECIAL_CHARS_REGEX, Constants.EMPTY_STRING);
 
-            Iterator iterator = songArrayList.iterator();
-            Song song;
-            while (iterator.hasNext()) {
-                song = (Song) iterator.next();
+            for (Song song : songArrayList) {
                 songNormalized = Normalizer.normalize(song.toString().toLowerCase(Locale.US), Normalizer.Form.NFD);
                 songWithoutAccents = songNormalized.replaceAll(SPECIAL_CHARS_REGEX, Constants.EMPTY_STRING);
 

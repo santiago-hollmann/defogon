@@ -10,6 +10,8 @@ public class HomeActivity extends BaseFragmentActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setInitialFragment(HomeFragment.newInstance());
+        if (savedInstanceState == null) {
+            setInitialFragment(HomeFragment.newInstance());
+        }
     }
 }
