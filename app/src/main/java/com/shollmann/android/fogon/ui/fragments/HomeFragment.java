@@ -80,6 +80,7 @@ public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTo
             query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
             query.setMaxCacheAge(TimeUnit.DAYS.toMillis(Constants.Parse.CACHE_DAYS_TIME));
         }
+        query.setLimit(Constants.Parse.MAX_LIST_SIZE);
         query.orderByAscending(ORDER_CRITERIA);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
