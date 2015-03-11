@@ -731,8 +731,7 @@ public abstract class ServiceActivity extends ActionBarActivity
     }
 
     private boolean isRegularAnimatedView() {
-        //TODO Remove ServiceActivity and put HomeActivity
-        return !(this instanceof ServiceActivity);
+        return !(this instanceof HomeActivity);
     }
 
     @Override
@@ -755,7 +754,7 @@ public abstract class ServiceActivity extends ActionBarActivity
 
     private boolean isExternalIntent(Intent intent) {
         return intent.getAction() == Intent.ACTION_VIEW || intent.getAction() == android.provider.Settings.ACTION_WIFI_SETTINGS ||
-                intent.getAction() == Intent.ACTION_SEND || intent.getAction() == Intent.ACTION_DIAL;
+                intent.getAction() == Intent.ACTION_CHOOSER || intent.getAction() == Intent.ACTION_SEND || intent.getAction() == Intent.ACTION_DIAL;
     }
 
     @Override
@@ -788,4 +787,13 @@ public abstract class ServiceActivity extends ActionBarActivity
     public ActionBarDrawerToggle getDrawerToggle() {
         return drawerToggle;
     }
+
+    public boolean isNavigationDrawerOpen() {
+        return drawer.isDrawerOpen(navigationDrawerView);
+    }
+
+    public void closeNavigationDrawer() {
+        drawer.closeDrawers();
+    }
+
 }
