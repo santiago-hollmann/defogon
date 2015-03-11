@@ -24,5 +24,6 @@ public class Constants extends com.shollmann.android.wood.Constants {
 
     public class Parse {
         public static final int CACHE_DAYS_TIME = 2;
+        public static final int MAX_LIST_SIZE = 1024;
     }
 }
