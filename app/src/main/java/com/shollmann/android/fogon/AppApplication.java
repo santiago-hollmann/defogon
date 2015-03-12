@@ -12,6 +12,9 @@ import android.view.inputmethod.InputMethodManager;
 import com.crashlytics.android.Crashlytics;
 import com.lookeate.java.api.model.APIResponse;
 import com.parse.Parse;
+import com.parse.ParseException;
+import com.parse.ParsePush;
+import com.parse.SaveCallback;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.helpers.Utilities;
@@ -29,7 +32,6 @@ import java.lang.reflect.Type;
 import io.fabric.sdk.android.Fabric;
 
 public class AppApplication extends android.app.Application {
-    public static final int INITIALIZE_VERSION = 1;
     private static AppApplication instance;
 
     private DataService dataService;
@@ -231,7 +233,21 @@ public class AppApplication extends android.app.Application {
         TrackerHelper.initTrackers(this);
 
         startParse();
+        registerParsePushNotificationsService();
 
+    }
+
+    private void registerParsePushNotificationsService() {
+        ParsePush.subscribeInBackground("", new SaveCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    LogInternal.log("Parse - Successfully subscribed to the broadcast channel.");
+                } else {
+                    LogInternal.error("Parse - Failed to subscribe for push " + e.getMessage());
+                }
+            }
+        });
     }
 
     private void startParse() {
