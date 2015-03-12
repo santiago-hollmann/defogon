@@ -21,6 +21,7 @@ import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.adapters.SongsFilteredAdapter;
+import com.shollmann.android.fogon.helpers.BundleHelper;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
@@ -37,16 +38,24 @@ import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTouchListener {
     public static final String ORDER_CRITERIA = "author";
+    private static final String LIST_POSITION = "songPositionOnList";
+    private static final String SONGS = "songList";
     private ListView listviewSongs;
     private EditText edtSearch;
     private ArrayList<Song> arraySongs = new ArrayList<>();
     private View view;
     private SongsFilteredAdapter adapter;
     private String keyword;
+    private int listScrollPosition;
 
     @Override
     public View onCreateCustomView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
+
+        if (savedInstanceState != null) {
+            arraySongs = BundleHelper.fromBundle(savedInstanceState, SONGS, new ArrayList<Song>());
+            listScrollPosition = BundleHelper.fromBundle(savedInstanceState, LIST_POSITION);
+        }
         return view;
     }
 
@@ -67,7 +76,11 @@ public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTo
         adapter = new SongsFilteredAdapter(getActivity(), arraySongs);
         listviewSongs.setAdapter(adapter);
 
-        getSongs();
+        if (arraySongs.isEmpty()) {
+            getSongs();
+        } else {
+            listviewSongs.setSelection(listScrollPosition);
+        }
 
         TrackerHelper.trackScreenName(HomeFragment.this.getClass().getSimpleName());
     }
@@ -80,6 +93,7 @@ public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTo
             query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
             query.setMaxCacheAge(TimeUnit.DAYS.toMillis(Constants.Parse.CACHE_DAYS_TIME));
         }
+        query.setLimit(Constants.Parse.MAX_LIST_SIZE);
         query.orderByAscending(ORDER_CRITERIA);
         query.findInBackground(new FindCallback<ParseObject>() {
             @Override
@@ -171,5 +185,12 @@ public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTo
             TrackerHelper.trackScreenAwake(PreferencesHelper.isScreenAwake());
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt(LIST_POSITION, listviewSongs.getFirstVisiblePosition());
+        outState.putSerializable(SONGS, arraySongs);
     }
 }

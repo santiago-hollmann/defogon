@@ -289,6 +289,10 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
     @Override
     public void onBackPressed() {
+        if (this.isNavigationDrawerOpen()) {
+            this.closeNavigationDrawer();
+            return;
+        }
         if (canIGoBack()) {
             final FragmentManager manager = getSupportFragmentManager();
             if (manager.getBackStackEntryCount() == 1) {
