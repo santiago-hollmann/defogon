@@ -72,6 +72,21 @@
             android:textSize="@dimen/drawer_text" />
 
         <TextView
+            android:id="@+id/drawer_rate_us"
+            android:layout_width="match_parent"
+            android:drawableLeft="@drawable/ic_drawer_rate_unselect"
+            android:background="@drawable/drawer_selector"
+            android:clickable="true"
+            android:visibility="gone"
+            android:drawablePadding="@dimen/medium_padding"
+            android:gravity="center_vertical"
+            android:layout_height="wrap_content"
+            android:text="@string/rate_us"
+            android:textColor="@color/black"
+            android:padding="@dimen/big_padding"
+            android:textSize="@dimen/drawer_text" />
+
+        <TextView
             android:id="@+id/drawer_send_song"
             android:drawableLeft="@drawable/ic_drawer_send_unselected"
             android:layout_width="match_parent"

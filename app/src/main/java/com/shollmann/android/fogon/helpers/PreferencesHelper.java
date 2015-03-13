@@ -153,7 +153,7 @@ public class PreferencesHelper {
             }.getType();
             return gson.fromJson(json, mapType);
         }
-        return null;
+        return new HashMap<>();
     }
 
     public static void setFavoriteSongs(HashMap<String, Song> favoriteSongs) {
