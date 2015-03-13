@@ -21,6 +21,8 @@
     <dimen name="min_list_item_height">250dp</dimen>
     <dimen name="professionals_list_avatar_margin">-32dp</dimen>
     <dimen name="drawer_width">300dp</dimen>
+    <dimen name="drawer_title_padding_left">12dp</dimen>
+    <dimen name="one_dp">1dp</dimen>
 
 
     <!-- MATERIAL GRAY BUTTON DIMENS -->
@@ -40,6 +42,5 @@
     <dimen name="control_padding_material">4dp</dimen>
     <!-- Default rounded corner for controls -->
     <dimen name="control_corner_material">2dp</dimen>
-    <dimen name="one_dp">1dp</dimen>
 
 </resources>

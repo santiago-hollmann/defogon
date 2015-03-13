@@ -68,16 +68,26 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
 
     private void markItemAsSelected() {
         if (activity instanceof HomeActivity) {
+            btnHome.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_songs_selected), null, null, null);
             btnHome.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
         } else if (activity instanceof FavoriteSongsActivity) {
+            btnFavoriteSongs.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_favorites_selected), null, null, null);
             btnFavoriteSongs.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
+        } else if (activity instanceof RandomSongsActivity) {
+            btnRandomMode.setSelected(true);
+            btnRandomMode.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_random_selected), null, null, null);
+            btnRandomMode.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
         }
     }
 
     private void unselectAllItems() {
         btnHome.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
         btnFavoriteSongs.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
+        btnRandomMode.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
 
+        btnRandomMode.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_random_unselected, 0, 0, 0);
+        btnHome.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_songs_unselected, 0, 0, 0);
+        btnFavoriteSongs.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_favorites_unselected, 0, 0, 0);
     }
 
     @Override
