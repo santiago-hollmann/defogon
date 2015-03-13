@@ -3,25 +3,33 @@ package com.shollmann.android.fogon.ui.views;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.shollmann.android.fogon.R;
+import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.ui.activities.FavoriteSongsActivity;
 import com.shollmann.android.fogon.ui.activities.HomeActivity;
+import com.shollmann.android.fogon.ui.activities.RandomSongsActivity;
 import com.shollmann.android.fogon.ui.activities.ServiceActivity;
+import com.shollmann.android.fogon.util.Constants;
 import com.shollmann.android.fogon.util.IntentFactory;
 
 public class NavigationDrawerView extends LinearLayout implements View.OnClickListener {
+    private static final int MIN_FAVORITES_TO_SHOW_REVIEW = 5;
+
     private View view;
     private TextView btnHome;
     private TextView btnFavoriteSongs;
+    private TextView btnRandomMode;
     private TextView btnSendSongs;
     private TextView btnReportSongs;
+    private TextView btnRateUs;
     private ServiceActivity activity;
 
     public NavigationDrawerView(Context context) {
@@ -47,13 +55,23 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
 
         btnHome = (TextView) view.findViewById(R.id.drawer_home);
         btnFavoriteSongs = (TextView) view.findViewById(R.id.drawer_favorite_songs);
+        btnRandomMode = (TextView) view.findViewById(R.id.drawer_random_mode);
         btnSendSongs = (TextView) view.findViewById(R.id.drawer_send_song);
         btnReportSongs = (TextView) view.findViewById(R.id.drawer_report_song);
+        btnRateUs = (TextView) view.findViewById(R.id.drawer_rate_us);
+
+        btnRateUs.setVisibility(canShowRateUs() ? View.VISIBLE : View.GONE);
 
         btnHome.setOnClickListener(this);
         btnFavoriteSongs.setOnClickListener(this);
         btnSendSongs.setOnClickListener(this);
         btnReportSongs.setOnClickListener(this);
+        btnRandomMode.setOnClickListener(this);
+        btnRateUs.setOnClickListener(this);
+    }
+
+    private boolean canShowRateUs() {
+        return PreferencesHelper.getFavoriteSongs() != null && PreferencesHelper.getFavoriteSongs().size() >= MIN_FAVORITES_TO_SHOW_REVIEW;
     }
 
 
@@ -64,16 +82,26 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
 
     private void markItemAsSelected() {
         if (activity instanceof HomeActivity) {
+            btnHome.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_songs_selected), null, null, null);
             btnHome.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
         } else if (activity instanceof FavoriteSongsActivity) {
+            btnFavoriteSongs.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_favorites_selected), null, null, null);
             btnFavoriteSongs.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
+        } else if (activity instanceof RandomSongsActivity) {
+            btnRandomMode.setSelected(true);
+            btnRandomMode.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_random_selected), null, null, null);
+            btnRandomMode.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
         }
     }
 
     private void unselectAllItems() {
         btnHome.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
         btnFavoriteSongs.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
+        btnRandomMode.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
 
+        btnRandomMode.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_random_unselected, 0, 0, 0);
+        btnHome.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_songs_unselected, 0, 0, 0);
+        btnFavoriteSongs.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_favorites_unselected, 0, 0, 0);
     }
 
     @Override
@@ -103,6 +131,23 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
                                 .getSendEmailActivity(ResourcesHelper.getString(R.string.report_song_subject)),
                         ResourcesHelper.getString(R.string.send_email)));
                 break;
+            case R.id.drawer_rate_us:
+                TrackerHelper.trackRateUsClicked();
+                openPlayStore();
+                break;
+            case R.id.drawer_random_mode:
+                if (!(activity instanceof RandomSongsActivity)) {
+                    activity.startActivity(IntentFactory.getRandomSongsActivity());
+                }
+                break;
+        }
+    }
+
+    private void openPlayStore() {
+        try {
+            activity.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(Constants.PLAYSTORE_URL + Constants.APP_PKG_NAME)));
+        } catch (Exception e) {
+
         }
     }
 }

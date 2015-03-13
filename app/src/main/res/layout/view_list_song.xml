@@ -22,7 +22,6 @@
         android:textStyle="bold"
         android:gravity="center_vertical"
         android:layout_alignTop="@id/song_favorite_btn"
-        android:text="asajsk a skaj skja sjka s"
         android:maxLines="2"
         android:textColor="@color/accent"
         android:ellipsize="end"

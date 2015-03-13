@@ -13,6 +13,7 @@ public class TrackerHelper {
     private static final String REMOVED_FROM_FAVORITE_SONGS = "removed_from_favorite_songs";
     private static final String SEARCH_TOUCHED = "search_touched";
     private static final String SCREEN_AWAKE = "screen_awake";
+    private static final String RATE_US_CLICKED = "rate_us_clicked";
 
     public static void initTrackers(Context context) {
         MixPanelHelper.initMixPanel(context);
@@ -49,5 +50,9 @@ public class TrackerHelper {
 
     public static void flushEvents() {
         MixPanelHelper.flushEvents();
+    }
+
+    public static void trackRateUsClicked() {
+        MixPanelHelper.trackEvent(RATE_US_CLICKED);
     }
 }

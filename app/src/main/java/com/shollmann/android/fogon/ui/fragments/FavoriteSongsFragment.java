@@ -4,18 +4,13 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.adapters.SongsFilteredAdapter;
@@ -149,33 +144,6 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
     public boolean onTouch(View v, MotionEvent event) {
         TrackerHelper.trackSearchTouched();
         return false;
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_songs, menu);
-        final MenuItem btnAwake = getOptionsMenuButton(menu, R.id.menu_awake);
-        btnAwake.setIcon(ResourcesHelper.getDrawable(PreferencesHelper.isScreenAwake() ? R.drawable.ic_turn_on : R.drawable.ic_turn_off));
-
-        super.onCreateOptionsMenu(menu, inflater);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (item.getItemId() == R.id.menu_awake) {
-            item.setIcon(ResourcesHelper.getDrawable(PreferencesHelper.isScreenAwake() ? R.drawable.ic_turn_off : R.drawable.ic_turn_on));
-            item.setTitle(ResourcesHelper.getString(PreferencesHelper.isScreenAwake() ? R.string.screen_off_menu : R.string.screen_awake_menu));
-            if (PreferencesHelper.isScreenAwake()) {
-                getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-            } else {
-                getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-            }
-
-            Toast.makeText(getActivity(), ResourcesHelper.getString(PreferencesHelper.isScreenAwake() ? R.string.screen_sleep : R.string.screen_awake), Toast.LENGTH_LONG).show();
-            PreferencesHelper.setScreenAwake(!PreferencesHelper.isScreenAwake());
-            TrackerHelper.trackScreenAwake(PreferencesHelper.isScreenAwake());
-        }
-        return super.onOptionsItemSelected(item);
     }
 
     @Override
