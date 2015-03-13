@@ -15,6 +15,9 @@
     <color name="accent">#ff5722</color>
     <color name="translucent_selector">#22F44336</color>
 
+    <color name="material_btn_red">@color/primary</color>
+    <color name="material_23_btn_border">@color/secondary</color>
+    <color name="material_23_btn_dark_gray">#e1e1e1</color>
 
     <!-- FORMS -->
     <color name="forms_light_text_color">#FFD2D2D2</color>

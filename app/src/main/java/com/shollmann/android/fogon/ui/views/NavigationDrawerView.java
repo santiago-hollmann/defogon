@@ -13,6 +13,7 @@ import com.shollmann.android.fogon.helpers.ResourcesHelper;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.ui.activities.FavoriteSongsActivity;
 import com.shollmann.android.fogon.ui.activities.HomeActivity;
+import com.shollmann.android.fogon.ui.activities.RandomSongsActivity;
 import com.shollmann.android.fogon.ui.activities.ServiceActivity;
 import com.shollmann.android.fogon.util.IntentFactory;
 
@@ -20,6 +21,7 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
     private View view;
     private TextView btnHome;
     private TextView btnFavoriteSongs;
+    private TextView btnRandomMode;
     private TextView btnSendSongs;
     private TextView btnReportSongs;
     private ServiceActivity activity;
@@ -47,6 +49,7 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
 
         btnHome = (TextView) view.findViewById(R.id.drawer_home);
         btnFavoriteSongs = (TextView) view.findViewById(R.id.drawer_favorite_songs);
+        btnRandomMode = (TextView) view.findViewById(R.id.drawer_random_mode);
         btnSendSongs = (TextView) view.findViewById(R.id.drawer_send_song);
         btnReportSongs = (TextView) view.findViewById(R.id.drawer_report_song);
 
@@ -54,6 +57,7 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
         btnFavoriteSongs.setOnClickListener(this);
         btnSendSongs.setOnClickListener(this);
         btnReportSongs.setOnClickListener(this);
+        btnRandomMode.setOnClickListener(this);
     }
 
 
@@ -102,6 +106,11 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
                 activity.startActivity(Intent.createChooser(IntentFactory
                                 .getSendEmailActivity(ResourcesHelper.getString(R.string.report_song_subject)),
                         ResourcesHelper.getString(R.string.send_email)));
+                break;
+            case R.id.drawer_random_mode:
+                if (!(activity instanceof RandomSongsActivity)) {
+                    activity.startActivity(IntentFactory.getRandomSongsActivity());
+                }
                 break;
         }
     }

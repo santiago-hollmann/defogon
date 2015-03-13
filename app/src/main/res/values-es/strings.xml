@@ -31,6 +31,8 @@
     <string name="screen_sleep">La pantalla no permanecerá encendida</string>
     <string name="screen_awake_menu">Pantalla encendida</string>
     <string name="screen_off_menu">Pantalla apagada</string>
+    <string name="next_song">¡Otra canción!</string>
+    <string name="random_mode">Modo aleatorio</string>
 
 
 </resources>

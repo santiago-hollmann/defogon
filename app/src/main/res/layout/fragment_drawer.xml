@@ -50,6 +50,17 @@
             android:textSize="@dimen/drawer_text" />
 
         <TextView
+            android:id="@+id/drawer_random_mode"
+            android:layout_width="match_parent"
+            android:background="@drawable/drawer_selector"
+            android:clickable="true"
+            android:layout_height="wrap_content"
+            android:text="@string/random_mode"
+            android:textColor="@color/black"
+            android:padding="@dimen/big_padding"
+            android:textSize="@dimen/drawer_text" />
+
+        <TextView
             android:id="@+id/drawer_send_song"
             android:layout_width="match_parent"
             android:background="@drawable/drawer_selector"

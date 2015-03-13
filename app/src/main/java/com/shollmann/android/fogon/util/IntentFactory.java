@@ -5,6 +5,7 @@ import android.content.Intent;
 import com.shollmann.android.fogon.AppApplication;
 import com.shollmann.android.fogon.ui.activities.FavoriteSongsActivity;
 import com.shollmann.android.fogon.ui.activities.HomeActivity;
+import com.shollmann.android.fogon.ui.activities.RandomSongsActivity;
 import com.shollmann.android.wood.services.DataService;
 
 public class IntentFactory {
@@ -20,6 +21,12 @@ public class IntentFactory {
 
     public static Intent getFavoriteSongsActivity() {
         Intent intent = new Intent(AppApplication.getApplication(), FavoriteSongsActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        return intent;
+    }
+
+    public static Intent getRandomSongsActivity() {
+        Intent intent = new Intent(AppApplication.getApplication(), RandomSongsActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         return intent;
     }
