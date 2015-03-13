@@ -33,5 +33,7 @@
     <string name="screen_sleep">The screen will turn off after not using the app</string>
     <string name="screen_awake_menu">Screen awake</string>
     <string name="screen_off_menu">Screen off</string>
+    <string name="next_song">Next song</string>
+    <string name="random_mode">Random mode</string>
 
 </resources>

@@ -3,8 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.shollmann.android.fogon"
     android:installLocation="auto"
-    android:versionCode="1011"
-    android:versionName="1.01.1">
+    android:versionCode="1020"
+    android:versionName="1.02.0">
 
     <uses-sdk
         android:minSdkVersion="10"
@@ -57,6 +57,12 @@
             android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".ui.activities.FavoriteSongsActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/AppTheme"
+            android:uiOptions="none"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.activities.RandomSongsActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme"
             android:uiOptions="none"
