@@ -17,12 +17,10 @@ import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.model.Song;
 import com.shollmann.android.fogon.util.Constants;
 import com.shollmann.android.wood.helpers.LogInternal;
-import com.shollmann.android.wood.network.NetworkUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.TimeUnit;
 
 public class RandomSongsFragment extends BaseFragment implements View.OnClickListener {
     public static final String ORDER_CRITERIA = "author";
@@ -82,12 +80,7 @@ public class RandomSongsFragment extends BaseFragment implements View.OnClickLis
 
     private void getSongs() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(Constants.Model.SONGS);
-        if (!NetworkUtilities.isConnected()) {
-            query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ONLY);
-        } else {
-            query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
-            query.setMaxCacheAge(TimeUnit.DAYS.toMillis(Constants.Parse.CACHE_DAYS_TIME));
-        }
+        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ONLY);
         query.setLimit(Constants.Parse.MAX_LIST_SIZE);
         query.orderByAscending(ORDER_CRITERIA);
         query.findInBackground(new FindCallback<ParseObject>() {
