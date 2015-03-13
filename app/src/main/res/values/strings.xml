@@ -35,5 +35,6 @@
     <string name="screen_off_menu">Screen off</string>
     <string name="next_song">Next song</string>
     <string name="random_mode">Random mode</string>
+    <string name="rate_us">You liked it? Rate us!</string>
 
 </resources>
