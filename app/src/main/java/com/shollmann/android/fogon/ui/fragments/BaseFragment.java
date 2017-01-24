@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.shollmann.android.fogon.DeFogonApplication;
 import com.shollmann.android.fogon.R;
+import com.shollmann.android.fogon.helpers.Constants;
 import com.shollmann.android.fogon.helpers.LogInternal;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
@@ -31,11 +32,9 @@ import com.shollmann.android.fogon.ui.activities.BaseFragmentActivity;
 import com.shollmann.android.fogon.ui.activities.ServiceActivity;
 
 public abstract class BaseFragment extends Fragment implements IFragment, DialogClickListener {
-
-    protected boolean showSearchMenu = true;
-
     private IServiceActivity activity;
     private IFragmentNavigation navigationActivity;
+    private Toast toast;
 
     @Override
     public void onAttach(Activity activity) {
@@ -377,8 +376,12 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
             } else {
                 getActivity().getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
             }
+            if (toast == null) {
+                toast = Toast.makeText(getActivity(), Constants.EMPTY_STRING, Toast.LENGTH_LONG);
+            }
+            toast.setText(ResourcesHelper.getString(PreferencesHelper.isScreenAwake() ? R.string.screen_sleep : R.string.screen_awake));
+            toast.show();
 
-            Toast.makeText(getActivity(), ResourcesHelper.getString(PreferencesHelper.isScreenAwake() ? R.string.screen_sleep : R.string.screen_awake), Toast.LENGTH_LONG).show();
             PreferencesHelper.setScreenAwake(!PreferencesHelper.isScreenAwake());
             TrackerHelper.trackScreenAwake(PreferencesHelper.isScreenAwake());
         }

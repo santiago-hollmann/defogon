@@ -13,11 +13,11 @@
             android:id="@+id/random_song_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/big_distance"
+            android:layout_marginBottom="@dimen/extra_big_padding"
             android:layout_marginTop="@dimen/big_padding"
             android:gravity="center"
             android:textColor="@color/accent"
-            android:textSize="@dimen/extra_big_text" />
+            android:textSize="@dimen/drawer_text" />
 
         <TextView
             android:id="@+id/random_song_chords"
@@ -25,8 +25,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/big_padding"
             android:gravity="center"
-            android:textSize="@dimen/extra_big_text"
-            android:textStyle="bold" />
+            android:textSize="@dimen/extra_big_text" />
 
         <Button
             android:id="@+id/random_btn_next"

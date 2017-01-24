@@ -32,7 +32,7 @@
         android:id="@+id/favorite_songs_listview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:divider="@color/light_gray"
+        android:divider="@color/gray"
         android:dividerHeight="0.5dp"
         android:drawSelectorOnTop="true"
         android:listSelector="@color/translucent_selector"

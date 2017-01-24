@@ -21,11 +21,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/song_favorite_btn"
-        android:layout_marginBottom="@dimen/small_padding"
+        android:layout_marginBottom="@dimen/large_padding"
         android:layout_toLeftOf="@id/song_favorite_btn"
         android:ellipsize="end"
         android:gravity="center_vertical"
         android:maxLines="2"
+        android:text="Artist - Song Name"
         android:textColor="@color/primary"
         android:textSize="@dimen/medium_text" />
 
@@ -33,8 +34,9 @@
         android:id="@+id/song_item_chords"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/dark"
         android:layout_below="@id/song_item_author_name"
+        android:text="C Am F G C Am F G / C Am F G C Am F G"
+        android:textColor="@color/dark"
         android:textSize="@dimen/extra_big_text" />
 
 </RelativeLayout>

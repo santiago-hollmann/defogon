@@ -11,7 +11,6 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParsePush;
 import com.parse.SaveCallback;
-import com.parse.interceptors.ParseLogInterceptor;
 import com.shollmann.android.fogon.helpers.LogInternal;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.util.Constants;
@@ -72,9 +71,8 @@ public class DeFogonApplication extends android.app.Application {
                 .applicationId(BuildConfig.APP_ID)
                 .clientKey(BuildConfig.CLIENT_KEY)
                 .server(BuildConfig.SERVER)
-                .addNetworkInterceptor(new ParseLogInterceptor())
-                .build()
-        );
+                .build());
+//                .addNetworkInterceptor(new ParseLogInterceptor())
     }
 
 }

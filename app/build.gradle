@@ -27,11 +27,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+            minifyEnabled false
             buildConfigField "String", "APP_ID", APP_ID
             buildConfigField "String", "CLIENT_KEY", CLIENT_KEY
             buildConfigField "String", "SERVER", SERVER
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            useProguard false
         }
 
         debug {
