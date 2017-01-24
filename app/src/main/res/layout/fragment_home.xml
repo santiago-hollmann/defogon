@@ -8,11 +8,13 @@
         android:id="@+id/home_songs_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/medium_padding"
+        android:layout_marginRight="@dimen/large_padding"
+        android:layout_marginLeft="@dimen/large_padding"
+        android:layout_marginTop="@dimen/large_padding"
+        android:layout_marginBottom="@dimen/small_padding"
         android:hint="@string/look_for_song"
         android:maxLength="40"
-        android:padding="@dimen/medium_padding"
-        android:singleLine="true" />
+        android:maxLines="1" />
 
     <ListView
         android:id="@+id/home_songs_listview"

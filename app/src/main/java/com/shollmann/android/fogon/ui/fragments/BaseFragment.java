@@ -3,6 +3,7 @@ package com.shollmann.android.fogon.ui.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
@@ -356,7 +357,7 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_songs, menu);
         final MenuItem btnAwake = getOptionsMenuButton(menu, R.id.menu_awake);
-        btnAwake.setIcon(ResourcesHelper.getDrawable(PreferencesHelper.isScreenAwake() ? R.drawable.ic_turn_on : R.drawable.ic_turn_off));
+        btnAwake.setIcon(VectorDrawableCompat.create(getResources(), PreferencesHelper.isScreenAwake() ? R.drawable.ic_sun : R.drawable.ic_moon, getContext().getTheme()));
 
         super.onCreateOptionsMenu(menu, inflater);
     }
@@ -369,7 +370,7 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
         }
 
         if (item.getItemId() == R.id.menu_awake) {
-            item.setIcon(ResourcesHelper.getDrawable(PreferencesHelper.isScreenAwake() ? R.drawable.ic_turn_off : R.drawable.ic_turn_on));
+            item.setIcon(VectorDrawableCompat.create(getResources(), PreferencesHelper.isScreenAwake() ? R.drawable.ic_moon : R.drawable.ic_sun, getContext().getTheme()));
             item.setTitle(ResourcesHelper.getString(PreferencesHelper.isScreenAwake() ? R.string.screen_off_menu : R.string.screen_awake_menu));
             if (PreferencesHelper.isScreenAwake()) {
                 getActivity().getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

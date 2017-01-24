@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.support.graphics.drawable.VectorDrawableCompat;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -21,7 +22,7 @@ import com.shollmann.android.fogon.util.Constants;
 import com.shollmann.android.fogon.util.IntentFactory;
 
 public class NavigationDrawerView extends LinearLayout implements View.OnClickListener {
-    private static final int MIN_FAVORITES_TO_SHOW_REVIEW = 5;
+    private static final int MIN_FAVORITES_TO_SHOW_REVIEW = 2;
 
     private View view;
     private TextView btnHome;
@@ -74,7 +75,6 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
         return PreferencesHelper.getFavoriteSongs() != null && PreferencesHelper.getFavoriteSongs().size() >= MIN_FAVORITES_TO_SHOW_REVIEW;
     }
 
-
     public void update() {
         unselectAllItems();
         markItemAsSelected();
@@ -82,26 +82,26 @@ public class NavigationDrawerView extends LinearLayout implements View.OnClickLi
 
     private void markItemAsSelected() {
         if (activity instanceof HomeActivity) {
-            btnHome.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_songs_selected), null, null, null);
-            btnHome.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
+            btnHome.setCompoundDrawablesWithIntrinsicBounds(VectorDrawableCompat.create(getResources(), R.drawable.ic_all_songs, getContext().getTheme()), null, null, null);
+            btnHome.setTextColor(ResourcesHelper.getResources().getColor(R.color.primary));
         } else if (activity instanceof FavoriteSongsActivity) {
-            btnFavoriteSongs.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_favorites_selected), null, null, null);
-            btnFavoriteSongs.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
+            btnFavoriteSongs.setCompoundDrawablesWithIntrinsicBounds(VectorDrawableCompat.create(getResources(), R.drawable.ic_bookmark, getContext().getTheme()), null, null, null);
+            btnFavoriteSongs.setTextColor(ResourcesHelper.getResources().getColor(R.color.primary));
         } else if (activity instanceof RandomSongsActivity) {
             btnRandomMode.setSelected(true);
-            btnRandomMode.setCompoundDrawablesWithIntrinsicBounds(ResourcesHelper.getDrawable(R.drawable.ic_drawer_random_selected), null, null, null);
-            btnRandomMode.setTextColor(ResourcesHelper.getResources().getColor(R.color.secondary));
+            btnRandomMode.setCompoundDrawablesWithIntrinsicBounds(VectorDrawableCompat.create(getResources(), R.drawable.ic_shuffle, getContext().getTheme()), null, null, null);
+            btnRandomMode.setTextColor(ResourcesHelper.getResources().getColor(R.color.primary));
         }
     }
 
     private void unselectAllItems() {
-        btnHome.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
-        btnFavoriteSongs.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
-        btnRandomMode.setTextColor(ResourcesHelper.getResources().getColor(R.color.black));
+        btnHome.setTextColor(ResourcesHelper.getResources().getColor(R.color.dark));
+        btnFavoriteSongs.setTextColor(ResourcesHelper.getResources().getColor(R.color.dark));
+        btnRandomMode.setTextColor(ResourcesHelper.getResources().getColor(R.color.dark));
 
-        btnRandomMode.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_random_unselected, 0, 0, 0);
-        btnHome.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_songs_unselected, 0, 0, 0);
-        btnFavoriteSongs.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_drawer_favorites_unselected, 0, 0, 0);
+        btnRandomMode.setCompoundDrawablesWithIntrinsicBounds(VectorDrawableCompat.create(getResources(), R.drawable.ic_shuffle_gray, getContext().getTheme()), null, null, null);
+        btnHome.setCompoundDrawablesWithIntrinsicBounds(VectorDrawableCompat.create(getResources(), R.drawable.ic_all_songs_gray, getContext().getTheme()), null, null, null);
+        btnFavoriteSongs.setCompoundDrawablesWithIntrinsicBounds(VectorDrawableCompat.create(getResources(), R.drawable.ic_bookmark_gray, getContext().getTheme()), null, null, null);
     }
 
     @Override

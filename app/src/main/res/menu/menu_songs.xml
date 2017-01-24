@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
         android:id="@+id/menu_awake"
-        android:icon="@drawable/ic_turn_on"
+        android:icon="@drawable/selector_sun"
         android:title="@string/screen_awake_menu"
         app:showAsAction="always" />
 </menu>

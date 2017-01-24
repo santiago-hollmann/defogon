@@ -3,6 +3,7 @@ package com.shollmann.android.fogon;
 import android.content.Context;
 import android.os.IBinder;
 import android.os.StrictMode;
+import android.support.v7.app.AppCompatDelegate;
 import android.view.inputmethod.InputMethodManager;
 
 import com.crashlytics.android.Crashlytics;
@@ -32,11 +33,14 @@ public class DeFogonApplication extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
+
         if (!BuildConfig.DEBUG) {
             Fabric.with(this, new Crashlytics());
         }
 
         instance = this;
+
 
         if (LogInternal.isDebugging() && LogInternal.isStrictMode()) {
             StrictMode.setVmPolicy(new StrictMode.VmPolicy.Builder().detectAll().penaltyLog().build());
