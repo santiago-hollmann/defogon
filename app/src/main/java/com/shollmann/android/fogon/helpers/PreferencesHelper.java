@@ -3,8 +3,6 @@ package com.shollmann.android.fogon.helpers;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import com.shollmann.android.fogon.AppApplication;
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.model.Song;
@@ -46,52 +44,8 @@ public class PreferencesHelper {
         set(APP_VERSION, value);
     }
 
-    public static boolean showGooglePlayService() {
-        return get(GOOGLE_PLAY_SERVICES_SHOWN, true);
-    }
-
-    public static void setShowGooglePlayService(boolean value) {
-        set(GOOGLE_PLAY_SERVICES_SHOWN, value);
-    }
-
-    public static int getActivitiesViews() {
-        return get(ACTIVITIES_VIEWS, 0);
-    }
-
-    public static void setActivitiesViews(int value) {
-        set(ACTIVITIES_VIEWS, value);
-    }
-
-    public static void setFirstStart(boolean firstStart) {
-        set(FIRST_START, firstStart);
-    }
-
-    public static boolean isFirstStart() {
-        return get(FIRST_START, true);
-    }
-
-    public static void setShouldUpdateCountryTag(boolean shouldUpdateCountryTag) {
-        set(SHOULD_UPDATE_COUNTRY_TAG, shouldUpdateCountryTag);
-    }
-
-    public static int getApiEndpoint() {
-        return get(API_ENDPOINT, Constants.Endpoints.PRODUCTION);
-    }
-
-    public static void setApiEndpoint(int endpoint) {
-        set(API_ENDPOINT, endpoint);
-    }
-
-    public static String getLanguageCode() {
-        return ResourcesHelper.getString(R.string.language_code);
-    }
-
     public static void setUseAutolocation(boolean useAutolocation) {
         set(USE_AUTOLOCATION, useAutolocation);
-    }
-
-    public static boolean getUseAutolocation() {
-        return get(USE_AUTOLOCATION, true);
     }
 
     public static int get(String key, int _default) {

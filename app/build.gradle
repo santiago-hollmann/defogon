@@ -14,20 +14,19 @@ repositories {
     maven { url 'https://maven.fabric.io/public' }
 }
 
-
 android {
-    compileSdkVersion 23
+    compileSdkVersion 24
     buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "com.shollmann.android.albatros"
+        applicationId "com.shollmann.android.fogon"
         minSdkVersion 16
-        targetSdkVersion 22
+        targetSdkVersion 24
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -38,15 +37,15 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
     compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.parse:parse-android:1.13.1'
-    compile fileTree(dir: 'libs', include: 'Parse-*.jar')
+    compile "com.mixpanel.android:mixpanel-android:4.+"
+    compile "com.google.android.gms:play-services:7.5.0+"
+    compile 'com.google.code.gson:gson:2.8.0'
 
-    //Libraries on the CRASHLYTICS-MAVEN repository
-    compile('com.crashlytics.sdk.android:crashlytics:2.2.2@aar') {
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
         transitive = true;
     }
 }
