@@ -7,8 +7,6 @@ import android.support.v4.app.FragmentActivity;
 
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.ui.fragments.CustomDialogFragment;
-import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.wood.helpers.LogInternal;
 
 public class DialogHelper {
     private static boolean isShowingProgressDialog = false;
@@ -46,56 +44,16 @@ public class DialogHelper {
             CustomDialogFragment progressFragment =
                     (CustomDialogFragment) activity.getSupportFragmentManager().findFragmentByTag("progress");
             if (progressFragment == null) {
-                LogInternal.logProgressDialog("Opening", activity);
                 CustomDialogFragment dialog = CustomDialogFragment.newInstance(DialogHelper.Dialogs.PROGRESS, title, message, cancelable);
                 showDialog(dialog, activity, "progress");
                 isShowingProgressDialog = true;
             }
         } else {
-            LogInternal.logProgressDialog("Opening skipped", activity);
         }
-    }
-
-    //ABTEST Swap Game
-    public synchronized static void showSwapProgress(final FragmentActivity activity, String message) {
-        CustomDialogFragment progressFragment =
-                (CustomDialogFragment) activity.getSupportFragmentManager().findFragmentByTag("swapprogress");
-        if (progressFragment == null) {
-            LogInternal.logProgressDialog("Swap Progress Opening", activity);
-            CustomDialogFragment dialog = CustomDialogFragment.newInstance(DialogHelper.Dialogs.SWAP_PROGRESS, Constants.EMPTY_STRING, message, false);
-            showDialog(dialog, activity, "progress");
-        }
-
-    }
-
-    //ABTEST Swap Game
-    public synchronized static void hideSwapProgress(final FragmentActivity activity) {
-        if (activity == null) {
-            LogInternal.logProgressDialog("Closing Skipped", activity);
-            return;
-        }
-        // Delaying the execution due to issues when trying to close the dialog
-        // before it has finished opening
-        Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                CustomDialogFragment progressFragment =
-                        (CustomDialogFragment) activity.getSupportFragmentManager().findFragmentByTag("swapprogress");
-                if (progressFragment != null) {
-                    LogInternal.logProgressDialog("Swap Closing", activity);
-                    progressFragment.dismissAllowingStateLoss();
-                } else {
-                    LogInternal.logProgressDialog("Swap Closing Skipped (fragment not found)", activity);
-                }
-            }
-        }, 20);
-        LogInternal.logProgressDialog("Swap Closing Scheduled", activity);
     }
 
     public synchronized static void hideProgress(final FragmentActivity activity) {
         if (activity == null) {
-            LogInternal.logProgressDialog("Closing Skipped", activity);
             return;
         }
         // Delaying the execution due to issues when trying to close the dialog
@@ -107,22 +65,18 @@ public class DialogHelper {
                 CustomDialogFragment progressFragment =
                         (CustomDialogFragment) activity.getSupportFragmentManager().findFragmentByTag("progress");
                 if (progressFragment != null) {
-                    LogInternal.logProgressDialog("Closing", activity);
                     isShowingProgressDialog = false;
                     progressFragment.dismissAllowingStateLoss();
                 } else {
-                    LogInternal.logProgressDialog("Closing Skipped (fragment not found)", activity);
                 }
             }
         }, 20);
-        LogInternal.logProgressDialog("Closing Scheduled", activity);
     }
 
     public synchronized static void resetProgressPresenceFlag() {
         //This is supposed to be executed on Activity transitions.
         //If there's an active dialog in this situation it will be lost and we should pull down this flag so it can be re-created afterwards
         if (isShowingProgressDialog) {
-            LogInternal.logProgressDialog("Had to reset presence flag", null);
             isShowingProgressDialog = false;
         }
     }
@@ -158,13 +112,12 @@ public class DialogHelper {
         return isShowingProgressDialog;
     }
 
-    public interface Dialogs {
-        public static final int GENERIC_ERROR = -2001;
-        public static final int PROGRESS = 3000;
-        public static final int SWAP_PROGRESS = 3010;
-    }
-
     private static void showDialog(DialogFragment dialog, FragmentActivity activity, String dialogId) {
         dialog.show(activity.getSupportFragmentManager(), dialogId);
+    }
+
+    public interface Dialogs {
+        int GENERIC_ERROR = -2001;
+        int PROGRESS = 3000;
     }
 }

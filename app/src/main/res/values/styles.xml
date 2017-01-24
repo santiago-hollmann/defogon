@@ -34,13 +34,6 @@
         <item name="subtitleTextStyle">@style/SubTitleText</item>
     </style>
 
-    <style name="progressbar">
-        <item name="android:indeterminateOnly">false</item>
-        <item name="android:progressDrawable">@drawable/progress_horizontal</item>
-        <item name="android:minHeight">2dp</item>
-        <item name="android:maxHeight">2dp</item>
-    </style>
-
     <style name="SubTitleText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Subtitle" />
 
     <style name="AppTheme.Dialog" parent="android:style/Theme.Dialog">
@@ -70,7 +63,7 @@
     </style>
 
     <style name="AppTheme.Dialog.Button.Borderless">
-        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:textColor">@color/dark</item>
         <item name="android:textSize">16sp</item>
         <item name="android:paddingLeft">4dip</item>
         <item name="android:paddingRight">4dip</item>
@@ -89,22 +82,6 @@
         <item name="snap">@bool/default_circle_indicator_snap</item>
         <item name="strokeColor">@color/default_circle_indicator_stroke_color</item>
         <item name="strokeWidth">@dimen/default_circle_indicator_stroke_width</item>
-    </style>
-
-    <style name="Animations" />
-
-    <style name="Animations.PopDownMenu">
-        <item name="@android:windowEnterAnimation">@anim/animation_fade_in</item>
-        <item name="@android:windowExitAnimation">@anim/animation_fade_out</item>
-    </style>
-
-    <style name="Animations.Jump">
-        <item name="@android:windowEnterAnimation">@anim/grow</item>
-        <item name="@android:windowExitAnimation">@anim/shrink</item>
-    </style>
-
-    <style name="TwoWayView">
-        <item name="android:orientation">horizontal</item>
     </style>
 
     <style name="noAnimTheme" parent="AppTheme">

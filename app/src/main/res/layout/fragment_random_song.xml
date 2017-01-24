@@ -4,41 +4,40 @@
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:padding="@dimen/medium_padding"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="@dimen/medium_padding">
 
         <TextView
-            android:layout_marginTop="@dimen/big_padding"
-            android:layout_marginBottom="@dimen/big_distance"
             android:id="@+id/random_song_title"
-            android:textColor="@color/accent"
-            android:gravity="center"
-            android:textSize="@dimen/extra_big_text"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/extra_big_padding"
+            android:layout_marginTop="@dimen/big_padding"
+            android:gravity="center"
+            android:textColor="@color/accent"
+            android:textSize="@dimen/drawer_text" />
 
         <TextView
-            android:textStyle="bold"
-            android:gravity="center"
-            android:layout_marginBottom="@dimen/big_padding"
             android:id="@+id/random_song_chords"
             android:layout_width="match_parent"
-            android:textSize="@dimen/extra_big_text"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/big_padding"
+            android:gravity="center"
+            android:textSize="@dimen/extra_big_text" />
 
         <Button
             android:id="@+id/random_btn_next"
             android:layout_width="wrap_content"
+            android:layout_height="@dimen/finger_size"
             android:layout_gravity="center"
-            android:paddingRight="@dimen/big_distance"
-            android:paddingLeft="@dimen/big_distance"
-            android:text="@string/next_song"
             android:layout_marginTop="@dimen/big_distance"
-            android:textColor="@color/white"
             android:background="@drawable/material_red_button"
-            android:layout_height="@dimen/finger_size" />
+            android:paddingLeft="@dimen/big_distance"
+            android:paddingRight="@dimen/big_distance"
+            android:text="@string/next_song"
+            android:textColor="@color/white" />
 
     </LinearLayout>
 </ScrollView>

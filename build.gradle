@@ -6,13 +6,9 @@ buildscript {
 
     //Android plugin for Gradle
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.0.+'
+        classpath 'com.android.tools.build:gradle:2.2.2'
         classpath 'com.crashlytics.tools.gradle:crashlytics-gradle:1.+'
     }
-}
-
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.2.1'
 }
 
 allprojects {

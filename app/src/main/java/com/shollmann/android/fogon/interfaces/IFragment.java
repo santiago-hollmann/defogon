@@ -4,29 +4,22 @@ import android.support.v7.app.ActionBar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.lookeate.java.api.model.APIResponse;
-
 public interface IFragment extends DialogClickListener {
+    void initialize();
 
-    public void setResponse(APIResponse response, String action);
+    boolean canIGoBack();
 
-    public void setResponse(APIResponse response, String action, boolean handleError);
+    void setActionBar(ActionBar actionBar);
 
-    public void initialize();
+    void onViewPagerSelected();
 
-    public boolean canIGoBack();
+    void onViewPagerUnSelected();
 
-    public void setActionBar(ActionBar actionBar);
+    void onLocationFailed();
 
-    public void onViewPagerSelected();
+    MenuItem getOptionsMenuButton(Menu menu, int buttonId);
 
-    public void onViewPagerUnSelected();
-
-    public void onLocationFailed();
-
-    public MenuItem getOptionsMenuButton(Menu menu, int buttonId);
-
-    public void onReload();
+    void onReload();
 
     void onRefresh();
 

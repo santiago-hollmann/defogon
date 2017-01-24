@@ -9,8 +9,8 @@ import java.util.List;
 
 public abstract class FastListEndlessAdapter<T> extends FastListAdapter<T> {
 
-    private OnLoadMoreListener loadMoreListener;
     private final int pageSize;
+    private OnLoadMoreListener loadMoreListener;
     private boolean keepLoading;
     private boolean loadMore = true;
 
@@ -51,6 +51,6 @@ public abstract class FastListEndlessAdapter<T> extends FastListAdapter<T> {
     }
 
     public interface OnLoadMoreListener {
-        public void loadMore();
+        void loadMore();
     }
 }

@@ -5,10 +5,8 @@ import android.support.v7.app.ActionBar;
 import android.view.View;
 
 import com.shollmann.android.fogon.R;
-import com.shollmann.android.fogon.helpers.DialogHelper;
-import com.shollmann.android.fogon.interfaces.IError;
 
-public abstract class BaseActivity extends ServiceActivity implements IError {
+public abstract class BaseActivity extends ServiceActivity {
     private void initActionBar() {
         ActionBar bar = getSupportActionBar();
         if (bar != null) {
@@ -19,11 +17,6 @@ public abstract class BaseActivity extends ServiceActivity implements IError {
     }
 
     @Override
-    public void onCancel(int dialogId) {
-        super.onCancel(dialogId);
-    }
-
-    @Override
     public void onCreate(Bundle savedInstance) {
         super.onCreate(savedInstance);
         findViewById(R.id.activity_fragment_layout).setVisibility(View.VISIBLE);
@@ -31,22 +24,7 @@ public abstract class BaseActivity extends ServiceActivity implements IError {
     }
 
     @Override
-    public void onDismiss(int dialogId) {
-        super.onDismiss(dialogId);
-    }
-
-    @Override
-    public void onNegativeClick(int dialogId) {
-        super.onNegativeClick(dialogId);
-    }
-
-    @Override
     public void onNeutralClick(int dialogId) {
-    }
-
-    @Override
-    public void onPositiveClick(int dialogId) {
-        super.onPositiveClick(dialogId);
     }
 
     @Override
@@ -57,12 +35,5 @@ public abstract class BaseActivity extends ServiceActivity implements IError {
     @Override
     public View getCustomDialogView(int dialogId) {
         return null;
-    }
-
-    @Override
-    public void showError(String title, String message, int dialogId) {
-        if (getSupportFragmentManager().findFragmentByTag("error") == null) {
-            DialogHelper.showError(this, title, message, dialogId);
-        }
     }
 }
