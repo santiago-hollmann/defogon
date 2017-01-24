@@ -52,7 +52,6 @@ dependencies {
     compile 'com.parse.bolts:bolts-android:1.+'
     compile 'com.parse:parse-android:1.13.1'
     compile "com.mixpanel.android:mixpanel-android:4.+"
-    compile "com.google.android.gms:play-services:7.5.0+"
     compile 'com.google.code.gson:gson:2.8.0'
 
     debugCompile 'com.parse:parseinterceptors:0.0.2'
