@@ -14,7 +14,7 @@ public class BundleHelper {
     }
 
     public static <T> T fromBundle(Bundle bundle, String key) {
-        return fromBundle(bundle, key, (T) null);
+        return fromBundle(bundle, key, null);
     }
 
     @SuppressWarnings("unchecked")

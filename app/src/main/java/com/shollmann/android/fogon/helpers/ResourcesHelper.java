@@ -12,7 +12,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.shollmann.android.fogon.AppApplication;
+import com.shollmann.android.fogon.DeFogonApplication;
 
 @SuppressWarnings("deprecation")
 public class ResourcesHelper {
@@ -24,11 +24,11 @@ public class ResourcesHelper {
     }
 
     public static void setScreenSize() {
-        ((WindowManager) AppApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+        ((WindowManager) DeFogonApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                 .getMetrics(metrics);
-        screenSize.x = ((WindowManager) AppApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+        screenSize.x = ((WindowManager) DeFogonApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                 .getWidth();
-        screenSize.y = ((WindowManager) AppApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
+        screenSize.y = ((WindowManager) DeFogonApplication.getApplication().getSystemService(Context.WINDOW_SERVICE)).getDefaultDisplay()
                 .getHeight();
     }
 
@@ -46,19 +46,19 @@ public class ResourcesHelper {
     }
 
     public static String getString(int resource) {
-        return AppApplication.getApplication().getString(resource);
+        return DeFogonApplication.getApplication().getString(resource);
     }
 
     public static Resources getResources() {
-        return AppApplication.getApplication().getResources();
+        return DeFogonApplication.getApplication().getResources();
     }
 
     public static String[] getStringArray(int resource) {
-        return AppApplication.getApplication().getResources().getStringArray(resource);
+        return DeFogonApplication.getApplication().getResources().getStringArray(resource);
     }
 
     public static int getDimensionPixelSize(int resource) {
-        AppApplication app = AppApplication.getApplication();
+        DeFogonApplication app = DeFogonApplication.getApplication();
         TypedValue rawValue = new TypedValue();
         app.getResources().getValue(resource, rawValue, true);
         if (rawValue.type == TypedValue.TYPE_FIRST_INT) {
@@ -71,7 +71,7 @@ public class ResourcesHelper {
     }
 
     public static Drawable getDrawable(int resource) {
-        return AppApplication.getApplication().getResources().getDrawable(resource);
+        return DeFogonApplication.getApplication().getResources().getDrawable(resource);
     }
 
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN)

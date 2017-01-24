@@ -50,7 +50,7 @@ public class SongItemView extends RelativeLayout implements View.OnClickListener
             this.song = song;
             txtChords.setText(song.getChords());
             txtNameAuthor.setText(String.format(ResourcesHelper.getString(R.string.word_word), song.getAuthor(), song.getName()));
-            btnFavorite.setImageDrawable(ResourcesHelper.getDrawable(song.isFavorite() ? R.drawable.ic_star_filled : R.drawable.ic_star_empty));
+            btnFavorite.setImageResource(song.isFavorite() ? R.drawable.ic_bookmark : R.drawable.ic_bookmark_border);
         }
     }
 
@@ -70,7 +70,7 @@ public class SongItemView extends RelativeLayout implements View.OnClickListener
             removeFromFavorites(favoriteSongs);
         }
 
-        btnFavorite.setImageDrawable(ResourcesHelper.getDrawable(song.isFavorite() ? R.drawable.ic_star_filled : R.drawable.ic_star_empty));
+        btnFavorite.setImageResource(song.isFavorite() ? R.drawable.ic_bookmark : R.drawable.ic_bookmark_border);
     }
 
     private void removeFromFavorites(HashMap<String, Song> favoriteSongs) {

@@ -3,7 +3,6 @@ package com.shollmann.android.fogon.helpers;
 import android.content.Context;
 
 import com.shollmann.android.fogon.model.Song;
-import com.shollmann.android.wood.helpers.MixPanelHelper;
 
 public class TrackerHelper {
 

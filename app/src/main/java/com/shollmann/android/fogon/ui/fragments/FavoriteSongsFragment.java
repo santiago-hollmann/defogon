@@ -26,11 +26,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, View.OnTouchListener {
-    private static final String LIST_POSITION = "itemListPosition";
-    private static final String SONGS = "songs";
     public static final int MILLIS_IN_FUTURE = 300;
     public static final int COUNT_DOWN_INTERVAL = 300;
-
+    private static final String LIST_POSITION = "itemListPosition";
+    private static final String SONGS = "songs";
     private ListView listviewSongs;
     private EditText edtSearch;
     private ArrayList<Song> arraySongs = new ArrayList<>();
@@ -46,6 +45,10 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
     public FavoriteSongsFragment() {
     }
 
+    public static FavoriteSongsFragment newInstance() {
+        return new FavoriteSongsFragment();
+    }
+
     @Override
     public View onCreateCustomView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_favorite_songs, container, false);
@@ -56,10 +59,6 @@ public class FavoriteSongsFragment extends BaseFragment implements TextWatcher, 
         }
 
         return view;
-    }
-
-    public static FavoriteSongsFragment newInstance() {
-        return new FavoriteSongsFragment();
     }
 
     @Override

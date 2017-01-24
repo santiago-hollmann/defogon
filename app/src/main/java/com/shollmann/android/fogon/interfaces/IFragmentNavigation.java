@@ -34,19 +34,19 @@ public interface IFragmentNavigation {
 
     void goToFragmentRemovingCurrent(IFragment fragment);
 
-    public static interface Directions {
-        static final int NONE = 0;
-        static final int RIGHT = 1;
-        static final int BOTTOM = 2;
-        static final int LEFT = 3;
-        static final int TOP = 4;
-        static final int POP = 5;
-    }
-
     void registerFragmentforNotifications(IFragment baseFragment);
 
     ActionBar getSupportActionBar();
 
     void unregisterFragmentforNotifications(IFragment baseFragment);
+
+    interface Directions {
+        int NONE = 0;
+        int RIGHT = 1;
+        int BOTTOM = 2;
+        int LEFT = 3;
+        int TOP = 4;
+        int POP = 5;
+    }
 
 }

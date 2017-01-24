@@ -1,6 +1,5 @@
 package com.shollmann.android.fogon.ui.activities;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -9,38 +8,18 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-import com.lookeate.java.api.model.APIResponse;
 import com.shollmann.android.fogon.R;
-import com.shollmann.android.fogon.helpers.BundleHelper;
 import com.shollmann.android.fogon.interfaces.IFragment;
 import com.shollmann.android.fogon.interfaces.IFragmentNavigation;
-import com.shollmann.android.fogon.interfaces.INetworkBannerDisplayer;
-import com.shollmann.android.fogon.interfaces.IOnReload;
-import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.wood.network.NetworkUtilities;
 
 import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class BaseFragmentActivity extends BaseActivity
-        implements IFragmentNavigation, NetworkUtilities.IConnectivityListener, OnClickListener, INetworkBannerDisplayer, IOnReload {
+public abstract class BaseFragmentActivity extends BaseActivity implements IFragmentNavigation, OnClickListener {
 
-    private static final String BANNER_STATE = "bannerState";
-    private final Set<IFragment> currentFragments = new HashSet<IFragment>();
-
-    public boolean showNetworkErrors = false;
     public static boolean disableFragmentAnimations = false;
-
-    @Override
-    public void onCreate(Bundle savedInstance) {
-        super.onCreate(savedInstance);
-
-        if (BundleHelper.bundleContains(savedInstance, BANNER_STATE)) {
-            setUIForConnectionIssues();
-        }
-
-    }
+    private final Set<IFragment> currentFragments = new HashSet<>();
 
     @Override
     public void registerFragmentforNotifications(IFragment fragment) {
@@ -50,30 +29,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
     @Override
     public void unregisterFragmentforNotifications(IFragment fragment) {
         currentFragments.remove(fragment);
-    }
-
-    @Override
-    public void onResultReceived(Intent intent) {
-        APIResponse response = (APIResponse) intent.getSerializableExtra(Constants.ExtraKeys.DATA);
-        String action = intent.getAction();
-        try {
-            for (IFragment fragment : currentFragments) {
-                fragment.setResponse(response, action);
-            }
-        } catch (ConcurrentModificationException ex) {
-        }
-    }
-
-    @Override
-    public void onResultReceivedNoError(Intent intent) {
-        APIResponse response = (APIResponse) intent.getSerializableExtra(Constants.ExtraKeys.DATA);
-        String action = intent.getAction();
-        try {
-            for (IFragment fragment : currentFragments) {
-                fragment.setResponse(response, action, false);
-            }
-        } catch (ConcurrentModificationException ex) {
-        }
     }
 
     private void setFragment(IFragment fragment, int direction) {
@@ -209,27 +164,12 @@ public abstract class BaseFragmentActivity extends BaseActivity
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        NetworkUtilities.registerListener(this);
-        // Careful here, we're using isOnline which can be set by hand
-        checkForNetworkErrors(NetworkUtilities.isOnline());
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        NetworkUtilities.unRegisterListener(this);
-    }
-
-    @Override
     public void slidePreviousFragment() {
         getSupportFragmentManager().popBackStackImmediate();
     }
 
     @Override
     public void onPositiveClick(int dialogId) {
-        super.onPositiveClick(dialogId);
         for (IFragment fragment : currentFragments) {
             fragment.onPositiveClick(dialogId);
         }
@@ -237,7 +177,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
     @Override
     public void onNegativeClick(int dialogId) {
-        super.onNegativeClick(dialogId);
         for (IFragment fragment : currentFragments) {
             fragment.onNegativeClick(dialogId);
         }
@@ -261,7 +200,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
     @Override
     public void onCancel(int dialogId) {
-        super.onCancel(dialogId);
         for (IFragment fragment : currentFragments) {
             fragment.onCancel(dialogId);
         }
@@ -269,7 +207,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
     @Override
     public void onDismiss(int dialogId) {
-        super.onDismiss(dialogId);
         for (IFragment fragment : currentFragments) {
             fragment.onDismiss(dialogId);
         }
@@ -313,61 +250,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
         }
         return canI;
-    }
-
-    @Override
-    public void onConnectivityChanged(boolean isConnected, boolean isOnline) {
-        showNetworkErrors = true;
-        // Careful here, we're using isOnline which can be set by hand
-        checkForNetworkErrors(isOnline);
-    }
-
-    private void checkForNetworkErrors(boolean isOnline) {
-        if (showNetworkErrors) {
-            if (isOnline) {
-                setUIForNoConnectionIssues();
-            } else {
-                setUIForConnectionIssues();
-            }
-        }
-    }
-
-    private void setUIForNoConnectionIssues() {
-        reloadData();
-    }
-
-    private void setUIForConnectionIssues() {
-    }
-
-    private void reloadData() {
-        try {
-            for (IFragment fragment : currentFragments) {
-                fragment.onReload();
-            }
-        } catch (ConcurrentModificationException ex) {
-
-        }
-    }
-
-    public void setShowNetworkErrors(boolean show) {
-        showNetworkErrors = show;
-    }
-
-    @Override
-    public void setShowNetworkIssueBanner(APIResponse response) {
-        if (response.isSuccess()) {
-            if (!response.isCache()) {
-                NetworkUtilities.setOnline(true);
-            }
-        } else {
-            if (!NetworkUtilities.isBackendError(response)) {
-                setUIForConnectionIssues();
-            }
-        }
-    }
-
-    @Override
-    public void onReload() {
     }
 
     public Fragment getCurrentFragment() {

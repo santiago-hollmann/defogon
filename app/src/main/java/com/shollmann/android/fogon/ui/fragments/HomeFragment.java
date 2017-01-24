@@ -18,13 +18,12 @@ import com.parse.ParseQuery;
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.adapters.SongsFilteredAdapter;
 import com.shollmann.android.fogon.helpers.BundleHelper;
+import com.shollmann.android.fogon.helpers.LogInternal;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.model.Song;
 import com.shollmann.android.fogon.util.Comparators;
 import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.wood.helpers.LogInternal;
-import com.shollmann.android.wood.network.NetworkUtilities;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -33,10 +32,10 @@ import java.util.concurrent.TimeUnit;
 
 public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTouchListener {
     public static final String ORDER_CRITERIA = "author";
-    private static final String LIST_POSITION = "songPositionOnList";
-    private static final String SONGS = "songList";
     public static final int MILLIS_IN_FUTURE = 300;
     public static final int COUNT_DOWN_INTERVAL = 300;
+    private static final String LIST_POSITION = "songPositionOnList";
+    private static final String SONGS = "songList";
     private ListView listviewSongs;
     private EditText edtSearch;
     private ArrayList<Song> arraySongs = new ArrayList<>();
@@ -47,6 +46,10 @@ public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTo
     private String keyword;
     private int listScrollPosition;
 
+    public static HomeFragment newInstance() {
+        return new HomeFragment();
+    }
+
     @Override
     public View onCreateCustomView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
@@ -56,10 +59,6 @@ public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTo
             listScrollPosition = BundleHelper.fromBundle(savedInstanceState, LIST_POSITION);
         }
         return view;
-    }
-
-    public static HomeFragment newInstance() {
-        return new HomeFragment();
     }
 
     @Override
@@ -100,12 +99,10 @@ public class HomeFragment extends BaseFragment implements TextWatcher, View.OnTo
 
     private void getSongs() {
         ParseQuery<ParseObject> query = ParseQuery.getQuery(Constants.Model.SONGS);
-        if (!NetworkUtilities.isConnected()) {
-            query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ONLY);
-        } else {
-            query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
-            query.setMaxCacheAge(TimeUnit.DAYS.toMillis(Constants.Parse.CACHE_DAYS_TIME));
-        }
+
+        query.setCachePolicy(ParseQuery.CachePolicy.CACHE_ELSE_NETWORK);
+        query.setMaxCacheAge(TimeUnit.DAYS.toMillis(Constants.Parse.CACHE_DAYS_TIME));
+
         query.setLimit(Constants.Parse.MAX_LIST_SIZE);
         query.orderByAscending(ORDER_CRITERIA);
         query.findInBackground(new FindCallback<ParseObject>() {
