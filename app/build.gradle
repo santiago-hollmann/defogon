@@ -16,22 +16,33 @@ repositories {
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    buildToolsVersion "25.0.1"
 
     defaultConfig {
         applicationId "com.shollmann.android.fogon"
         minSdkVersion 16
         targetSdkVersion 24
+        vectorDrawables.useSupportLibrary = true
     }
 
     buildTypes {
         release {
             minifyEnabled true
+            buildConfigField "String", "APP_ID", APP_ID
+            buildConfigField "String", "CLIENT_KEY", CLIENT_KEY
+            buildConfigField "String", "SERVER", SERVER
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        debug {
+            buildConfigField "String", "APP_ID", APP_ID
+            buildConfigField "String", "CLIENT_KEY", CLIENT_KEY
+            buildConfigField "String", "SERVER", SERVER
         }
     }
 
     lintOptions {
+        checkReleaseBuilds false
         abortOnError false
     }
 }
@@ -44,8 +55,9 @@ dependencies {
     compile "com.google.android.gms:play-services:7.5.0+"
     compile 'com.google.code.gson:gson:2.8.0'
 
+    debugCompile 'com.parse:parseinterceptors:0.0.2'
 
-    compile('com.crashlytics.sdk.android:crashlytics:2.6.5@aar') {
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.6@aar') {
         transitive = true;
     }
 }

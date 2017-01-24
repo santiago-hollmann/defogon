@@ -10,29 +10,25 @@ import android.support.v4.app.DialogFragment;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 
-import com.shollmann.android.fogon.AppApplication;
+import com.shollmann.android.fogon.DeFogonApplication;
 import com.shollmann.android.fogon.interfaces.DialogClickListener;
 
 public class CustomDialogFragment extends DialogFragment {
 
     private Dialog dialog;
 
-    public void setDialog(Dialog dialog) {
-        this.dialog = dialog;
-    }
-
     public static CustomDialogFragment newInstance(int dialogId, String title, int ok, int cancel, int neutral, boolean cancelable) {
         CustomDialogFragment frag = new CustomDialogFragment();
         Bundle args = new Bundle();
         args.putString("title", title);
         if (ok != 0) {
-            args.putString("ok", AppApplication.getApplication().getString(ok));
+            args.putString("ok", DeFogonApplication.getApplication().getString(ok));
         }
         if (cancel != 0) {
-            args.putString("cancel", AppApplication.getApplication().getString(cancel));
+            args.putString("cancel", DeFogonApplication.getApplication().getString(cancel));
         }
         if (neutral != 0) {
-            args.putString("neutral", AppApplication.getApplication().getString(neutral));
+            args.putString("neutral", DeFogonApplication.getApplication().getString(neutral));
         }
         args.putInt("dialogId", dialogId);
         args.putBoolean("cancelable", cancelable);
@@ -48,13 +44,13 @@ public class CustomDialogFragment extends DialogFragment {
         args.putString("title", title);
         args.putString("message", message);
         if (ok > 0) {
-            args.putString("ok", AppApplication.getApplication().getString(ok));
+            args.putString("ok", DeFogonApplication.getApplication().getString(ok));
         }
         if (cancel > 0) {
-            args.putString("cancel", AppApplication.getApplication().getString(cancel));
+            args.putString("cancel", DeFogonApplication.getApplication().getString(cancel));
         }
         if (neutral > 0) {
-            args.putString("neutral", AppApplication.getApplication().getString(neutral));
+            args.putString("neutral", DeFogonApplication.getApplication().getString(neutral));
         }
         args.putInt("dialogId", dialogId);
         args.putBoolean("cancelable", cancelable);
@@ -93,6 +89,10 @@ public class CustomDialogFragment extends DialogFragment {
         CustomDialogFragment frag = new CustomDialogFragment();
         frag.setDialog(dialog);
         return frag;
+    }
+
+    public void setDialog(Dialog dialog) {
+        this.dialog = dialog;
     }
 
     @Override

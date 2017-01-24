@@ -4,12 +4,6 @@
     <color name="light_gray">#E6E6E6</color>
     <color name="white">#FFFFFF</color>
     <color name="black">#000000</color>
-    <color name="translucent_black">#66000000</color>
-    <color name="translucent_subtle_black">#20000000</color>
-    <color name="translucent_blue">#602973D2</color>
-    <color name="orange">#FFFF7900</color>
-    <color name="dark_gray">#FF494949</color>
-    <color name="very_light_blue">#ff6ab3ff</color>
     <color name="secondary">#D32F2F</color>
     <color name="primary">#F44336</color>
     <color name="accent">#ff5722</color>
@@ -20,17 +14,11 @@
     <color name="material_23_btn_dark_gray">#e1e1e1</color>
 
     <!-- FORMS -->
-    <color name="forms_light_text_color">#FFD2D2D2</color>
-    <color name="forms_gray_text_color">#FFC5C5C5</color>
-    <color name="forms_text_color">#FF494949</color>
-    <color name="forms_pressed_color">#FFF6F8E5</color>
-    <color name="forms_green_separator">#FFAABB00</color>
 
     <!-- SYSTEM -->
     <color name="action_bar_background">@color/primary</color>
     <color name="text_primary">#FF505050</color>
     <color name="text_primary_light">#ff878787</color>
-    <color name="text_primary_pressed">@color/white</color>
 
 
 </resources>

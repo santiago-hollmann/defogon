@@ -10,16 +10,17 @@ import com.parse.Parse;
 import com.parse.ParseException;
 import com.parse.ParsePush;
 import com.parse.SaveCallback;
+import com.parse.interceptors.ParseLogInterceptor;
 import com.shollmann.android.fogon.helpers.LogInternal;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.util.Constants;
 
 import io.fabric.sdk.android.Fabric;
 
-public class AppApplication extends android.app.Application {
-    private static AppApplication instance;
+public class DeFogonApplication extends android.app.Application {
+    private static DeFogonApplication instance;
 
-    public static AppApplication getApplication() {
+    public static DeFogonApplication getApplication() {
         return instance;
     }
 
@@ -31,7 +32,7 @@ public class AppApplication extends android.app.Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (!LogInternal.isDebugging()) {
+        if (!BuildConfig.DEBUG) {
             Fabric.with(this, new Crashlytics());
         }
 
@@ -64,9 +65,10 @@ public class AppApplication extends android.app.Application {
 
     private void startParse() {
         Parse.initialize(new Parse.Configuration.Builder(getApplication())
-                .applicationId("nl7pJ17IaIt2uiPmRyeSLvgVAFyOQvzwRZepRPMa")
-                .clientKey("Dw7IGglTweWafyTfRUQRbI9NqtOEWlz7bd5sauV0")
-                .server("https://pg-app-eo2qa3qreym21d23p7cwhukyg2qeax.scalabl.cloud/1/")
+                .applicationId(BuildConfig.APP_ID)
+                .clientKey(BuildConfig.CLIENT_KEY)
+                .server(BuildConfig.SERVER)
+                .addNetworkInterceptor(new ParseLogInterceptor())
                 .build()
         );
     }

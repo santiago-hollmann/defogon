@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,7 +16,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.Toast;
 
-import com.shollmann.android.fogon.AppApplication;
+import com.shollmann.android.fogon.DeFogonApplication;
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.helpers.LogInternal;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
@@ -237,7 +237,7 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
     public void onViewPagerUnSelected() {
     }
 
-    protected AppApplication getApp() {
+    protected DeFogonApplication getApp() {
         return activity.getApp();
     }
 
@@ -322,8 +322,7 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
     public void onResume() {
         super.onResume();
         navigationActivity.registerFragmentforNotifications(this);
-        activity.firePendingResponsesAsync();
-        setActionBar(((ActionBarActivity) getActivity()).getSupportActionBar());
+        setActionBar(((AppCompatActivity) getActivity()).getSupportActionBar());
 
         initialize();
     }

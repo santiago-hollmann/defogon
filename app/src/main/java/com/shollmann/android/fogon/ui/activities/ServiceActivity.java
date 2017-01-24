@@ -8,8 +8,8 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v4.widget.SwipeRefreshLayout.OnRefreshListener;
-import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,9 +20,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
 
-import com.google.android.gms.common.GooglePlayServicesClient;
-import com.google.android.gms.location.LocationListener;
-import com.shollmann.android.fogon.AppApplication;
+import com.shollmann.android.fogon.DeFogonApplication;
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.helpers.BundleHelper;
 import com.shollmann.android.fogon.helpers.DialogHelper;
@@ -34,33 +32,26 @@ import com.shollmann.android.fogon.interfaces.IServiceActivity;
 import com.shollmann.android.fogon.ui.views.NavigationDrawerView;
 import com.shollmann.android.fogon.util.Constants;
 
-import java.util.Set;
-
-public abstract class ServiceActivity extends ActionBarActivity
-        implements DialogClickListener, IServiceActivity, Toolbar.OnMenuItemClickListener, GooglePlayServicesClient.ConnectionCallbacks,
-        GooglePlayServicesClient.OnConnectionFailedListener, LocationListener, OnRefreshListener {
+public abstract class ServiceActivity extends AppCompatActivity
+        implements DialogClickListener, IServiceActivity, Toolbar.OnMenuItemClickListener, OnRefreshListener {
     private static final int DRAWER_CLOSED = 0;
     private static final int DRAWER_OPENED = 1;
-
+    public SwipeRefreshLayout swipeLayout;
     protected Bundle requestIds;
     protected FrameLayout main;
-    private AppApplication app;
-
     protected boolean fullScreen = false;
+    protected boolean isDrawerEnabled = true;
+    private DeFogonApplication app;
     private boolean hideUpdating = false;
     private boolean slidingDrawer = false;
     private boolean showingDrawer = false;
-    protected boolean isDrawerEnabled = true;
-
     private CharSequence mTitle;
-
-    public SwipeRefreshLayout swipeLayout;
     private ActionBarDrawerToggle drawerToggle;
     private DrawerLayout drawer;
     private NavigationDrawerView navigationDrawerView;
 
     public ServiceActivity() {
-        app = AppApplication.getApplication();
+        app = DeFogonApplication.getApplication();
     }
 
     @SuppressWarnings("deprecation")
@@ -74,7 +65,7 @@ public abstract class ServiceActivity extends ActionBarActivity
         showingDrawer = BundleHelper.fromBundle(savedInstanceState, "showingDrawer", false);
 
         if (fullScreen) {
-            requestWindowFeature(Window.FEATURE_NO_TITLE);
+            supportRequestWindowFeature(Window.FEATURE_NO_TITLE);
             getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         }
 
@@ -95,7 +86,7 @@ public abstract class ServiceActivity extends ActionBarActivity
 
         swipeLayout = (SwipeRefreshLayout) findViewById(R.id.srl_container);
         swipeLayout.setOnRefreshListener(this);
-        swipeLayout.setColorScheme(R.color.primary, R.color.accent, R.color.secondary);
+        swipeLayout.setColorSchemeResources(R.color.primary, R.color.accent, R.color.secondary);
 
         if (!PreferencesHelper.isScreenAwake()) {
             getWindow().clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
@@ -136,7 +127,7 @@ public abstract class ServiceActivity extends ActionBarActivity
     }
 
     public void openDrawer() {
-        drawer.openDrawer(R.id.navigation_drawer);
+        drawer.openDrawer(navigationDrawerView, true);
     }
 
     private void onCloseDrawer() {
@@ -163,28 +154,13 @@ public abstract class ServiceActivity extends ActionBarActivity
         getSupportActionBar().setTitle(Constants.EMPTY_STRING);
 
         if (getCurrentFocus() != null) {
-            AppApplication.hideKeyboard(getCurrentFocus().getWindowToken());
+            DeFogonApplication.hideKeyboard(getCurrentFocus().getWindowToken());
         }
     }
 
     @Override
-    public void changeLocation() {
-        chooseManualLocation();
-    }
-
-    @Override
-    public void cleanupRequestIds() {
-        requestIds.clear();
-    }
-
-    @Override
-    public AppApplication getApp() {
+    public DeFogonApplication getApp() {
         return app;
-    }
-
-    @Override
-    public String getRequestId(String key) {
-        return requestIds.getString(key);
     }
 
     @Override
@@ -197,32 +173,9 @@ public abstract class ServiceActivity extends ActionBarActivity
     }
 
     @Override
-    public boolean isRunning(String key) {
-        return requestIds.containsKey(key);
-    }
-
-    private synchronized boolean isRunningRequestId(String requestId) {
-        Set<String> keys = requestIds.keySet();
-        for (String key : keys) {
-            if (requestId.equalsIgnoreCase(getRequestId(key))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
         drawerToggle.onConfigurationChanged(newConfig);
-    }
-
-    private void chooseManualLocation() {
-        PreferencesHelper.setUseAutolocation(false);
-    }
-
-    @Override
-    public void onDisconnected() {
     }
 
     @Override
@@ -353,7 +306,7 @@ public abstract class ServiceActivity extends ActionBarActivity
     }
 
     public boolean canToggleDrawer() {
-        return isDrawerEnabled && isDrawerUnlocked() && !isSearchBarActive();
+        return isDrawerEnabled && isDrawerUnlocked();
     }
 
     public boolean toggleDrawer() {
@@ -372,19 +325,11 @@ public abstract class ServiceActivity extends ActionBarActivity
         return drawer.isDrawerVisible(GravityCompat.START);
     }
 
-    private class CloseDrawerAnimation implements Runnable {
-        @Override
-        public void run() {
-            closeDrawer();
-        }
-    }
-
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         drawerToggle.syncState();
     }
-
 
     @Override
     public void onSelectedItem(int dialogId, int position, String item) {
@@ -393,7 +338,7 @@ public abstract class ServiceActivity extends ActionBarActivity
     @Override
     public void hideKeyboard() {
         if (getCurrentFocus() != null) {
-            AppApplication.hideKeyboard(getCurrentFocus().getWindowToken());
+            DeFogonApplication.hideKeyboard(getCurrentFocus().getWindowToken());
         }
     }
 
@@ -456,6 +401,13 @@ public abstract class ServiceActivity extends ActionBarActivity
 
     public void closeNavigationDrawer() {
         drawer.closeDrawers();
+    }
+
+    private class CloseDrawerAnimation implements Runnable {
+        @Override
+        public void run() {
+            closeDrawer();
+        }
     }
 
 }

@@ -3,7 +3,6 @@ package com.shollmann.android.fogon.ui.activities;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 
-import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.util.IntentFactory;
 
 

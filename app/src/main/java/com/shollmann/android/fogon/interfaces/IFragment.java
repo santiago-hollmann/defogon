@@ -5,21 +5,21 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public interface IFragment extends DialogClickListener {
-    public void initialize();
+    void initialize();
 
-    public boolean canIGoBack();
+    boolean canIGoBack();
 
-    public void setActionBar(ActionBar actionBar);
+    void setActionBar(ActionBar actionBar);
 
-    public void onViewPagerSelected();
+    void onViewPagerSelected();
 
-    public void onViewPagerUnSelected();
+    void onViewPagerUnSelected();
 
-    public void onLocationFailed();
+    void onLocationFailed();
 
-    public MenuItem getOptionsMenuButton(Menu menu, int buttonId);
+    MenuItem getOptionsMenuButton(Menu menu, int buttonId);
 
-    public void onReload();
+    void onReload();
 
     void onRefresh();
 

@@ -3,6 +3,7 @@ package com.shollmann.android.fogon.util;
 public class Constants extends com.shollmann.android.fogon.helpers.Constants {
     public static final String CONTACT_EMAIL = "defogonandroid@gmail.com";
     public static final String APP_PKG_NAME = "com.shollmann.android.fogon";
+    public static final String PLAYSTORE_URL = "market://details?id=";
 
     public static class ExtraKeys extends com.shollmann.android.fogon.helpers.Constants {
         public static final String DATA = "data";

@@ -1,15 +1,13 @@
 package com.shollmann.android.fogon.helpers;
 
+import android.support.compat.BuildConfig;
 import android.util.Log;
 
 public class LogInternal {
-    private static boolean DEBUG = false;
-    private static boolean LOG_UI_NAVIGATION = false;
-
     public static final String TAG = "DeFogon";
-    private static final long MIN_TOAST_INTERVAL = 2500;
     private static final boolean STRICT_MODE = false;
-    private static long lastToast;
+    private static boolean DEBUG = BuildConfig.DEBUG;
+    private static boolean LOG_UI_NAVIGATION = false;
 
     public static boolean isDebugging() {
         return DEBUG;

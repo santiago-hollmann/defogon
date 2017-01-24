@@ -11,13 +11,9 @@ import java.util.List;
 
 public abstract class FastListAdapter<T> extends BaseAdapter implements OnScrollListener {
 
-    public abstract interface OnClickListener<T> {
-        public abstract void onClick(View v, T item);
-    }
-
+    private final Context context;
     protected List<T> mDataObjects;
     private OnClickListener<T> mListenerClick;
-    private final Context context;
     private int firstOne = 0;
     private boolean scrolling;
     private int lastState = 0;
@@ -127,6 +123,10 @@ public abstract class FastListAdapter<T> extends BaseAdapter implements OnScroll
 
     public void setScrolling(boolean scrolling) {
         this.scrolling = scrolling;
+    }
+
+    public interface OnClickListener<T> {
+        void onClick(View v, T item);
     }
 
 }

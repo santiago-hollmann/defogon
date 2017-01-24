@@ -11,18 +11,15 @@ import android.view.View.OnClickListener;
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.interfaces.IFragment;
 import com.shollmann.android.fogon.interfaces.IFragmentNavigation;
-import com.shollmann.android.fogon.interfaces.IOnReload;
 
 import java.util.ConcurrentModificationException;
 import java.util.HashSet;
 import java.util.Set;
 
-public abstract class BaseFragmentActivity extends BaseActivity
-        implements IFragmentNavigation, OnClickListener, IOnReload {
-
-    private final Set<IFragment> currentFragments = new HashSet<>();
+public abstract class BaseFragmentActivity extends BaseActivity implements IFragmentNavigation, OnClickListener {
 
     public static boolean disableFragmentAnimations = false;
+    private final Set<IFragment> currentFragments = new HashSet<>();
 
     @Override
     public void registerFragmentforNotifications(IFragment fragment) {
@@ -173,7 +170,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
     @Override
     public void onPositiveClick(int dialogId) {
-        super.onPositiveClick(dialogId);
         for (IFragment fragment : currentFragments) {
             fragment.onPositiveClick(dialogId);
         }
@@ -181,7 +177,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
     @Override
     public void onNegativeClick(int dialogId) {
-        super.onNegativeClick(dialogId);
         for (IFragment fragment : currentFragments) {
             fragment.onNegativeClick(dialogId);
         }
@@ -205,7 +200,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
     @Override
     public void onCancel(int dialogId) {
-        super.onCancel(dialogId);
         for (IFragment fragment : currentFragments) {
             fragment.onCancel(dialogId);
         }
@@ -213,7 +207,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
     @Override
     public void onDismiss(int dialogId) {
-        super.onDismiss(dialogId);
         for (IFragment fragment : currentFragments) {
             fragment.onDismiss(dialogId);
         }
@@ -257,27 +250,6 @@ public abstract class BaseFragmentActivity extends BaseActivity
 
         }
         return canI;
-    }
-
-    private void setUIForNoConnectionIssues() {
-        reloadData();
-    }
-
-    private void setUIForConnectionIssues() {
-    }
-
-    private void reloadData() {
-        try {
-            for (IFragment fragment : currentFragments) {
-                fragment.onReload();
-            }
-        } catch (ConcurrentModificationException ex) {
-
-        }
-    }
-
-    @Override
-    public void onReload() {
     }
 
     public Fragment getCurrentFragment() {

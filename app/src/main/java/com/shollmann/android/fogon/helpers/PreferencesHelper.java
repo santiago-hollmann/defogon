@@ -3,45 +3,28 @@ package com.shollmann.android.fogon.helpers;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 
-import com.shollmann.android.fogon.AppApplication;
-import com.shollmann.android.fogon.R;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+import com.shollmann.android.fogon.DeFogonApplication;
 import com.shollmann.android.fogon.model.Song;
-import com.shollmann.android.fogon.util.Constants;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 
 public class PreferencesHelper {
-    private final static String API_ENDPOINT = "apiEndpoint";
-    private static final String FIRST_START = "firstStart";
-    private static final String SHOULD_UPDATE_COUNTRY_TAG = "shouldUpdateCountryTag";
-    private static final String ACTIVITIES_VIEWS = "activitiesViews";
-    private static final String APP_VERSION = "appVersion";
     private static final String USE_AUTOLOCATION = "useAutolocation";
-    private static final String IS_NEW_VERSION = "isNewVersion";
-    private static final String GOOGLE_PLAY_SERVICES_SHOWN = "googlePlayServicesShown";
     private static final String FAVORITE_SONGS = "favoriteSongs";
     private static final String IS_SCREEN_AWAKE = "isScreenAwake";
 
     private final static Gson gson = new Gson();
+    private static SharedPreferences prefs;
 
     static {
-        prefs = PreferenceManager.getDefaultSharedPreferences(AppApplication.getApplication());
+        prefs = PreferenceManager.getDefaultSharedPreferences(DeFogonApplication.getApplication());
     }
-
-
-    private static SharedPreferences prefs;
 
     public static void clear() {
         prefs.edit().clear().commit();
-    }
-
-    public static String getCurrentVersion() {
-        return get(APP_VERSION, null);
-    }
-
-    public static void setCurrentVersion(String value) {
-        set(APP_VERSION, value);
     }
 
     public static void setUseAutolocation(boolean useAutolocation) {
@@ -90,14 +73,6 @@ public class PreferencesHelper {
 
     public static void remove(String key) {
         prefs.edit().remove(key).commit();
-    }
-
-    public static void setIsNewVersion(boolean isNewVersion) {
-        set(IS_NEW_VERSION, isNewVersion);
-    }
-
-    public static boolean isNewVersion() {
-        return get(IS_NEW_VERSION, false);
     }
 
     public static HashMap<String, Song> getFavoriteSongs() {

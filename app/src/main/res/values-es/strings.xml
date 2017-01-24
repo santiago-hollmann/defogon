@@ -7,15 +7,7 @@
     <string name="date_just_now">Ahora</string>
     <string name="date_minutes_ago">Hace %1%s minutos</string>
     <string name="date_hours_ago">Hace %1$s horas</string>
-    <string name="toggle_off">Off</string>
-    <string name="toggle_on">On</string>
-    <string name="check_your_internet_connection">Comprobá tu conexión a Internet</string>
     <string name="ok">OK</string>
-    <string name="error_loading_content">Error al cargar el contenido</string>
-    <string name="connecting">Conectando...</string>
-    <string name="autolocating">Autolocalizando...</string>
-    <string name="language_code">languageCode</string>
-    <string name="action_settings">Ajustes</string>
     <string name="drawer_open">Abrir Drawer</string>
     <string name="drawer_close">Cerrar Drawer</string>
     <string name="word_word">%1$s - %2$s</string>

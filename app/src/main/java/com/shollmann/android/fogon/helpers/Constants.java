@@ -6,6 +6,12 @@ public class Constants {
     public static final String SPACE_STRING = " ";
     public static final String COMMA_STRING = ", ";
 
+    public interface Endpoints {
+        int PRODUCTION = 0;
+        int TESTING = 1;
+        int MOCK = 2;
+    }
+
     public static class Errors {
         public static final int NO_NETWORK = -77;
         public static final int UNEXPECTED = -33;
@@ -15,12 +21,6 @@ public class Constants {
 
     public static class StatusCode {
         public static final int OK = 200;
-    }
-
-    public static interface Endpoints {
-        public static final int PRODUCTION = 0;
-        public static final int TESTING = 1;
-        public static final int MOCK = 2;
     }
 
     public static class ExtraKeys {
