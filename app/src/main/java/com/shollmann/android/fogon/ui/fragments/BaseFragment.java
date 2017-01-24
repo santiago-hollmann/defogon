@@ -16,31 +16,22 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.widget.Toast;
 
-import com.lookeate.java.api.model.APIResponse;
 import com.shollmann.android.fogon.AppApplication;
 import com.shollmann.android.fogon.R;
-import com.shollmann.android.fogon.helpers.DialogHelper;
+import com.shollmann.android.fogon.helpers.LogInternal;
 import com.shollmann.android.fogon.helpers.PreferencesHelper;
 import com.shollmann.android.fogon.helpers.ResourcesHelper;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.interfaces.DialogClickListener;
-import com.shollmann.android.fogon.interfaces.IError;
 import com.shollmann.android.fogon.interfaces.IFragment;
 import com.shollmann.android.fogon.interfaces.IFragmentNavigation;
-import com.shollmann.android.fogon.interfaces.INetworkBannerDisplayer;
 import com.shollmann.android.fogon.interfaces.IServiceActivity;
 import com.shollmann.android.fogon.ui.activities.BaseFragmentActivity;
 import com.shollmann.android.fogon.ui.activities.ServiceActivity;
-import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.wood.arguments.ServiceArguments;
-import com.shollmann.android.wood.helpers.LogInternal;
-import com.shollmann.android.wood.network.NetworkUtilities;
 
 public abstract class BaseFragment extends Fragment implements IFragment, DialogClickListener {
 
-    private static final int ERROR_NETWORK_DIALOG = 4455;
     protected boolean showSearchMenu = true;
-    private boolean isShowingServerErrorDialog = false;
 
     private IServiceActivity activity;
     private IFragmentNavigation navigationActivity;
@@ -73,54 +64,9 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
         activity.triggerAnimation(view, show, showAnimationResource, hideAnimationResource);
     }
 
-    @Override
-    public void setResponse(APIResponse response, String action) {
-        setResponse(response, action, true);
-    }
-
-    @Override
-    public void setResponse(APIResponse response, String action, boolean handleError) {
-        removeResponse(response.getRequestId());
-        if (getActivity() != null) {
-            ((INetworkBannerDisplayer) getActivity()).setShowNetworkIssueBanner(response);
-        }
-
-        if (!response.isSuccess() && hasToShowNoDataFragment(response)) {
-            NetworkUtilities.setOnline(false);
-            goToFragmentRemovingCurrent(NoDataAvailableFragment.newInstance());
-
-        } else if (hasToShowErrorResponseMessage(response, handleError)) {
-            isShowingServerErrorDialog = true;
-            DialogHelper.show(getActivity(), null, getString(R.string.error_loading_content), R.string.ok, 0, 0, ERROR_NETWORK_DIALOG);
-        }
-
-    }
-
-    private boolean hasToShowErrorResponseMessage(APIResponse response, boolean handleError) {
-        return handleError && NetworkUtilities.isBackendError(response) && !isShowingServerErrorDialog;
-    }
-
-    private boolean hasToShowNoDataFragment(APIResponse response) {
-        return !isAvoidNoConnectionFragment() &&
-                (!NetworkUtilities.isConnected() || response.getStatusCode() == Constants.Errors.TIME_OUT ||
-                        response.getStatusCode() == Constants.Errors.UNEXPECTED || response.getStatusCode() == APIResponse.UNEXPECTED ||
-                        response.getStatusCode() == Constants.Errors.NO_NETWORK);
-    }
-
     private boolean isAvoidNoConnectionFragment() {
         // should return true or false depending on the instance type of the current fragment
         return false;
-    }
-
-    public final APIResponse removeResponse(String requestId) {
-        if (getActivity() != null) {
-            return activity.removeResponse(requestId);
-        }
-        return null;
-    }
-
-    public boolean isMyRequest(APIResponse response, String requestId) {
-        return activity.isMyRequest(response, requestId);
     }
 
     @Override
@@ -265,42 +211,6 @@ public abstract class BaseFragment extends Fragment implements IFragment, Dialog
 
     protected void popFragment(IFragment fragment) {
         navigationActivity.popFragment(fragment);
-    }
-
-    protected void changeLocation() {
-        activity.changeLocation();
-    }
-
-    protected void showError(String title, String message, int dialogId) {
-        ((IError) getActivity()).showError(title, message, dialogId);
-    }
-
-    protected void processError(APIResponse response) {
-        activity.processError(response);
-    }
-
-    public final String makeNetworkCall(ServiceArguments args, String key) {
-        return makeNetworkCall(args, key, true);
-    }
-
-    public final String makeNetworkCall(ServiceArguments args, String key, boolean showLoading) {
-        return activity.makeNetworkCall(args, key, showLoading);
-    }
-
-    public final boolean isRunning(String key) {
-        return activity.isRunning(key);
-    }
-
-    public final String getRequestId(String key) {
-        return activity.getRequestId(key);
-    }
-
-    public final void removeRequestId(String key) {
-        activity.removeRequestId(key);
-    }
-
-    public final void cleanupRequestIds() {
-        activity.cleanupRequestIds();
     }
 
     public final void hideUpdating() {

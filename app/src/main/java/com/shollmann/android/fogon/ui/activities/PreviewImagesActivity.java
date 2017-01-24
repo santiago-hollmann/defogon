@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.shollmann.android.fogon.R;
-import com.shollmann.android.fogon.adapters.PreviewImagesAdapter;
 import com.shollmann.android.fogon.ui.views.controls.ImagesPageIndicator;
 import com.shollmann.android.fogon.ui.views.controls.ImagesViewPager;
 

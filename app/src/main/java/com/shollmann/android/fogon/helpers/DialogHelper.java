@@ -8,7 +8,6 @@ import android.support.v4.app.FragmentActivity;
 import com.shollmann.android.fogon.R;
 import com.shollmann.android.fogon.ui.fragments.CustomDialogFragment;
 import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.wood.helpers.LogInternal;
 
 public class DialogHelper {
     private static boolean isShowingProgressDialog = false;

@@ -1,4 +1,4 @@
-package com.shollmann.android.wood;
+package com.shollmann.android.fogon.helpers;
 
 public class Constants {
 

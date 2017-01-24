@@ -16,7 +16,7 @@ import com.shollmann.android.fogon.helpers.ResourcesHelper;
 import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.model.Song;
 import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.wood.helpers.LogInternal;
+import com.shollmann.android.fogon.helpers.LogInternal;
 
 import java.util.ArrayList;
 import java.util.List;

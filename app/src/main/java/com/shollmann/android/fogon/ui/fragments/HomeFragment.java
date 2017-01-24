@@ -23,7 +23,7 @@ import com.shollmann.android.fogon.helpers.TrackerHelper;
 import com.shollmann.android.fogon.model.Song;
 import com.shollmann.android.fogon.util.Comparators;
 import com.shollmann.android.fogon.util.Constants;
-import com.shollmann.android.wood.helpers.LogInternal;
+import com.shollmann.android.fogon.helpers.LogInternal;
 import com.shollmann.android.wood.network.NetworkUtilities;
 
 import java.util.ArrayList;

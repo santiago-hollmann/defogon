@@ -16,14 +16,15 @@ repositories {
 
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.2"
+    compileSdkVersion 23
+    buildToolsVersion "24.0.2"
 
     defaultConfig {
-        applicationId "com.shollmann.android.fogon"
-        minSdkVersion 10
-        targetSdkVersion 21
+        applicationId "com.shollmann.android.albatros"
+        minSdkVersion 16
+        targetSdkVersion 22
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -38,11 +39,10 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':core-lib')
 
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.squareup.picasso:picasso:2.3.+'
+    compile 'com.android.support:appcompat-v7:24.2.1'
     compile 'com.parse.bolts:bolts-android:1.+'
+    compile 'com.parse:parse-android:1.13.1'
     compile fileTree(dir: 'libs', include: 'Parse-*.jar')
 
     //Libraries on the CRASHLYTICS-MAVEN repository

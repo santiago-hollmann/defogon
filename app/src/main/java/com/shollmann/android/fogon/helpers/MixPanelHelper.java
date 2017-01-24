@@ -1,8 +1,9 @@
-package com.shollmann.android.wood.helpers;
+package com.shollmann.android.fogon.helpers;
 
 import android.content.Context;
 
 import com.mixpanel.android.mpmetrics.MixpanelAPI;
+import com.shollmann.android.wood.helpers.ConfigurationHelper;
 
 import org.json.JSONException;
 import org.json.JSONObject;
